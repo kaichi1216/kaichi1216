@@ -143,13 +143,24 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <p>剛開始學ruby的時候，看到一個變數前面有個 <code>:</code>符號，那時想說這到底是什麼鬼東西，在寫的時候也很疑惑， 他跟變數有什麼差別，跟什麼時機要使用它呢？<br>上圖的意思是happy是一個變數 然後他指向給<code>寫程式一時爽，一直寫一直爽</code>，變數跟Symbol不一樣的地方是，沒有<code>寫程式一時爽，一直寫一直爽</code>這個字串指向 happy的話，happy是沒辦法單獨存在的，但Symbol可以，因為他本身不需指向任何東西也可以拿來使用</p>
-<h2>Symbol 跟字串的差別？</h2>
-Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意思就是不能被修改的，還有就是Symbol的效能比字串稍微好一點 如下圖
-字串的話，每次都會產生不同的記憶體，等於是五個不同的物件存在記憶體了，Symbol就都是相同的物件id，相對的就節省記憶體的空間
-要怎麼知道哪時要使用字串或symbol呢？
-比較常見的是 Hash裡面的Key，因為Symbol的不可變的特性，查詢速度快，字串的使用時機例如 想把畫面上的內容印出來就可以使用，因為如果使用Symbol的話，還是要先轉成字串在印出。
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy = 寫程式一時爽，一直寫一直爽</span><br></pre></td></tr></table></figure>
 
+<div>
+剛開始學ruby的時候，看到一個變數前面有個 " : "符號，那時想說這到底是什麼鬼東西，在寫的時候也很疑惑， 他跟變數有什麼差別，跟什麼時機要使用它呢？
+上圖的意思是happy是一個變數 然後他指向給`寫程式一時爽，一直寫一直爽`，變數跟Symbol不一樣的地方是，沒有`寫程式一時爽，一直寫一直爽`這個字串指向 happy的話，happy是沒辦法單獨存在的，但Symbol可以，因為他本身不需指向任何東西也可以拿來使用
+</div>
+
+<h1>Symbol 跟字串的差別？</h1>
+
+<p>
+Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意思就是不能被修改的，還有就是Symbol的效能比字串稍微好一點 如下圖
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">5.times do</span><br><span class="line">   puts &apos;寫程式一時爽， 一直寫一直爽！！！&apos;.object_id</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">=&gt;</span><br><span class="line">70235554609420</span><br><span class="line">70235554609060</span><br><span class="line">70235554608840</span><br><span class="line">70235554608700</span><br><span class="line">70235554608580</span><br></pre></td></tr></table></figure>
+
+</p><p>字串的話，每次都會產生不同的記憶體，等於是五個不同的物件存在記憶體了，Symbol就都是相同的物件id，相對的就節省記憶體的空間。</p>
+<p>要怎麼知道哪時要使用字串或symbol呢？</p>
+<p>比較常見的是 Hash裡面的Key，因為Symbol的不可變的特性，查詢速度快，字串的使用時機例如 想把畫面上的內容印出來就可以使用，因為如果使用Symbol的話，還是要先轉成字串在印出。</p>
+<p></p>
         </div>
       </article>
     </div>
