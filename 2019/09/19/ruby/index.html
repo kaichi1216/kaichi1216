@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Hello World">
+      <meta property="og:title" content="ruby 和 rails中的 Symbol">
   
   <!--Open Graph Description-->
   
@@ -33,7 +33,7 @@
 
   <!-- Title -->
   
-  <title>Hello World - K7</title>
+  <title>ruby 和 rails中的 Symbol - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -113,33 +113,42 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            Hello World
+            ruby 和 rails中的 Symbol
             
           </h1>
           <p class="posted-on">
-          2019-09-17
+          2019-09-19
           </p>
           <div class="tags-links">
             
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/css/" rel="tag">
+                  css
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
               
             
           </div>
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+          <p>剛開始學ruby的時候，看到一個變數前面有個 <code>:</code>符號，那時想說這到底是什麼鬼東西，在寫的時候也很疑惑， 他跟變數有什麼差別，跟什麼時機要使用它呢？<br>上圖的意思是happy是一個變數 然後他指向給<code>寫程式一時爽，一直寫一直爽</code>，變數跟Symbol不一樣的地方是，沒有<code>寫程式一時爽，一直寫一直爽</code>這個字串指向 happy的話，happy是沒辦法單獨存在的，但Symbol可以，因為他本身不需指向任何東西也可以拿來使用</p>
+<h2>Symbol 跟字串的差別？</h2>
+Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意思就是不能被修改的，還有就是Symbol的效能比字串稍微好一點 如下圖
+字串的話，每次都會產生不同的記憶體，等於是五個不同的物件存在記憶體了，Symbol就都是相同的物件id，相對的就節省記憶體的空間
+要怎麼知道哪時要使用字串或symbol呢？
+比較常見的是 Hash裡面的Key，因為Symbol的不可變的特性，查詢速度快，字串的使用時機例如 想把畫面上的內容印出來就可以使用，因為如果使用Symbol的話，還是要先轉成字串在印出。
 
         </div>
       </article>
@@ -158,13 +167,9 @@
     <!-- Pre or Next -->
     <div class="nav-links">
       
-        <div class="nav-previous">
-          <a href="/2019/09/17/test1/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
-        </div>
-      
       
         <div class="nav-next">
-          <a href="/2019/06/10/08/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/09/17/test1/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>
