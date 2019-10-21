@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="迴圈 迭代 (Loop and Iteration )">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>迴圈 迭代 (Loop and Iteration ) - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            迴圈 迭代 (Loop and Iteration )
+            
+          </h1>
+          <p class="posted-on">
+          2019-09-29
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>還沒接觸學習程式前，看到這個笑話，當時還不知道笑點在哪裡，直到現在….我終於看懂了！！(這代表我有稍微進步嗎！？)</p>
+<p>有一天，老婆打電話給他的工程師老公說:<br>「親愛的，下班幫我買十個包子，若看到賣西瓜的，就買一個。」<br>結果工程師下班之後只有買一個包子，老婆很疑惑的問:「怎麼只有買一個包子呢?」<br>老公說:「因為我看到賣西瓜的。」<br>這是語義不完整造成的誤解:<br>老婆的意思是:「買十個包子，若看到賣西瓜的，再多買一個西瓜。」<br>老公的解讀是:「買十個包子，若看到賣西瓜的，改成買一個包子。」</p>
+<p>今天就來介紹 迴圈跟迭代吧</p>
+<p>在 Ruby 的迴圈主要有幾種：</p>
+<p>while 迴圈<br>for..in 迴圈<br>times, upto, downto<br>迭代（iteration）<br>while 迴圈</p>
+<p>句法</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> conditional [<span class="keyword">do</span>]</span><br><span class="line">  code</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">counter = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> counter &lt; <span class="number">5</span> <span class="keyword">do</span></span><br><span class="line">  puts counter</span><br><span class="line">  counter += <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以這題來說 我們有一個counter = 1 的變數 條件為 值小於 5 就執行，所以會印出。</span></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="until"><a href="#until" class="headerlink" title="until"></a>until</h1><p>也可以使用until來寫</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">counter = <span class="number">1</span></span><br><span class="line"><span class="keyword">until</span> counter &gt; <span class="number">5</span> <span class="keyword">do</span></span><br><span class="line">  puts counter</span><br><span class="line">  counter += <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="for-in-迴圈"><a href="#for-in-迴圈" class="headerlink" title="for..in 迴圈"></a>for..in 迴圈</h1><p>假設你有一個陣列</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#想要把他印出來</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers</span><br><span class="line">  puts number</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以這樣寫</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">5</span> <span class="keyword">do</span></span><br><span class="line">  puts i</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="times-upto-downto-方法"><a href="#times-upto-downto-方法" class="headerlink" title="times, upto, downto 方法"></a>times, upto, downto 方法</h1><p>times 意思是 可以指定要跑幾次 像這樣：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>.times <span class="keyword">do</span></span><br><span class="line">  puts <span class="string">"哈囉你好"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line">哈囉你好</span><br><span class="line">哈囉你好</span><br><span class="line">哈囉你好</span><br><span class="line">哈囉你好</span><br><span class="line">哈囉你好</span><br></pre></td></tr></table></figure>
+
+<h1 id="upto-跟-downto-範例："><a href="#upto-跟-downto-範例：" class="headerlink" title="upto 跟 downto 範例："></a>upto 跟 downto 範例：</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.upto(<span class="number">5</span>) <span class="keyword">do</span> <span class="params">|i|</span></span><br><span class="line">  puts <span class="string">"hi, ruby <span class="subst">#&#123;i&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line"><span class="comment"># hi, ruby 1</span></span><br><span class="line"><span class="comment"># hi, ruby 2</span></span><br><span class="line"><span class="comment"># hi, ruby 3</span></span><br><span class="line"><span class="comment"># hi, ruby 4</span></span><br><span class="line"><span class="comment"># hi, ruby 5</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>.downto(<span class="number">1</span>) <span class="keyword">do</span> <span class="params">|i|</span></span><br><span class="line">  puts <span class="string">"hi, ruby <span class="subst">#&#123;i&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt;</span></span><br><span class="line"><span class="comment"># hi, ruby 5</span></span><br><span class="line"><span class="comment"># hi, ruby 4</span></span><br><span class="line"><span class="comment"># hi, ruby 3</span></span><br><span class="line"><span class="comment"># hi, ruby 2</span></span><br><span class="line"><span class="comment"># hi, ruby 1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="迭代-iteration"><a href="#迭代-iteration" class="headerlink" title="迭代(iteration)"></a>迭代(iteration)</h1><p>在 Ruby 中，大括號（{ }） 和 do … end 是可以交替使用的，前者通常用在單行的程式碼，後者用在多行的程式碼區塊。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.each <span class="keyword">do</span> <span class="params">|num|</span></span><br><span class="line">  puts num </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#除了用 for..in 的方式把陣列裡的東西印出來，更常使用 each 方法來做這件事</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="hash-的迭代"><a href="#hash-的迭代" class="headerlink" title="hash 的迭代"></a>hash 的迭代</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">hash = &#123;<span class="symbol">apple:</span> <span class="string">"pen"</span>, <span class="symbol">pen:</span> <span class="string">"pineapple"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 疊代 key 和 value</span></span><br><span class="line">hash.each <span class="keyword">do</span> <span class="params">|key, value|</span></span><br><span class="line">  puts <span class="string">"Key: <span class="subst">#&#123;key&#125;</span>, Value: <span class="subst">#&#123;value&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 疊代 key</span></span><br><span class="line">hash.each_key <span class="keyword">do</span> <span class="params">|key|</span></span><br><span class="line">  puts key</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 疊代 value</span></span><br><span class="line">hash.each_value <span class="keyword">do</span> <span class="params">|value|</span></span><br><span class="line">  puts value</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>參考資料：<br><a href="https://railsbook.tw/chapters/05-ruby-basic-1.html#loop-and-iterationhttp://" target="_blank" rel="noopener">為你自己學 Ruby on Rails</a><br><a href="https://www.tutorialspoint.com/ruby/ruby_loops.htm" target="_blank" rel="noopener">ruby loop</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/09/30/it16/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/09/28/it14/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

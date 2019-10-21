@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="程式碼區塊 (Block)">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>程式碼區塊 (Block) - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            程式碼區塊 (Block)
+            
+          </h1>
+          <p class="posted-on">
+          2019-09-25
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>不知道各位在剛接觸Ruby的時候 常常對於block感到很困惑，奇怪為什麼可以這樣寫？ 疑 為什麼這樣寫會出錯？<br>今天這篇我就以我自己學習的觀念講解關於block</p>
+<h1 id="什麼是block"><a href="#什麼是block" class="headerlink" title="什麼是block?"></a>什麼是block?</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>.times &#123; puts <span class="string">"Hello, Ruby"</span> &#125;      </span><br><span class="line"><span class="comment">#=&gt; 印出 5 次的 Hello Ruby</span></span><br><span class="line"></span><br><span class="line">friends = [<span class="string">"kai"</span>, <span class="string">"lin"</span>, <span class="string">"ding"</span>, <span class="string">"kao"</span>]</span><br><span class="line">friends.each <span class="keyword">do</span> <span class="params">|friend|</span></span><br><span class="line">  puts friend                       </span><br><span class="line"><span class="comment">#=&gt; 這會把陣列裡的元素一個一個印出來</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="number">0</span></span><br><span class="line">array = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">array.each <span class="keyword">do</span> <span class="params">|value|</span></span><br><span class="line">  result = result + value  <span class="comment">#從do到end中間算是一個block。</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">result</span><br><span class="line"><span class="comment">#=&gt; 20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt;實際上執行的內容為：</span></span><br><span class="line"><span class="comment"># 由於array數列中有五個值，因此總共會執行五次，帶入不同的值</span></span><br><span class="line">result = result + <span class="number">2</span></span><br><span class="line">result = result + <span class="number">3</span></span><br><span class="line">result = result + <span class="number">4</span></span><br><span class="line">result = result + <span class="number">5</span></span><br><span class="line">result = result + <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p>大括號 { … } 以及 do … end，在 Ruby 稱之一個程式碼區塊（Block）</p>
+<h1 id="Block-不是物件"><a href="#Block-不是物件" class="headerlink" title="Block 不是物件"></a>Block 不是物件</h1><p>我們常會說 Ruby 是一款物件化很徹底的程式語言，在 Ruby 什麼東西都是物件…嗯，但其實還是有少數的例外，例如 Block 本身就不是物件。Block 沒有辦法單獨的存在，也沒辦法把它指定給某個變數，我就是在這邊卡住的，要稍微注意一下。</p>
+<h1 id="do-與-的差異"><a href="#do-與-的差異" class="headerlink" title="do 與 {} 的差異"></a>do 與 {} 的差異</h1><p>什麼時候該用do，什麼時候該用括弧{}呢？在Stackoverflow上有許多相關討論，可以整理為以下邏輯：</p>
+<p>如果邏輯簡單，可以用一行來處理，就盡量使用 {}<br>相對之下，如果邏輯複雜，則以分行寫的方式處理，使用do…end寫法</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="number">0</span></span><br><span class="line">array = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">array.each <span class="keyword">do</span> <span class="params">|value|</span></span><br><span class="line">    result = result + value</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">result</span><br><span class="line"></span><br><span class="line"><span class="comment">#上面這段程式碼可以改寫成</span></span><br><span class="line"></span><br><span class="line">array.each &#123;<span class="params">|value|</span> result = result + value &#125;</span><br></pre></td></tr></table></figure>
+
+<p>＃這樣程式碼一行就搞定而且又清楚</p>
+<p>另外，在Rails當中，如果要處理一整串從資料庫挖出來的資料怎麼做？假如我有一堆個人資料要算平均年齡，可以用以下作法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hash_array = [&#123;<span class="symbol">:name</span> =&gt; <span class="string">"John"</span>, <span class="symbol">:age</span> =&gt; <span class="number">30</span>&#125;,</span><br><span class="line">              &#123;<span class="symbol">:name</span> =&gt; <span class="string">"Peter"</span>, <span class="symbol">:age</span> =&gt; <span class="number">28</span>&#125;,</span><br><span class="line">              &#123;<span class="symbol">:name</span> =&gt; <span class="string">"Mary"</span>, <span class="symbol">:age</span> =&gt; <span class="number">32</span>&#125;,</span><br><span class="line">             ]</span><br><span class="line">result = <span class="number">0</span></span><br><span class="line">hash_array.each &#123;<span class="params">|person|</span> result += person[<span class="symbol">:age</span>] &#125;</span><br><span class="line">average = result / hash_array.length</span><br><span class="line"><span class="comment"># =&gt; 30</span></span><br><span class="line">Rails中其他常使用的block：collect、map</span><br></pre></td></tr></table></figure>
+
+<h2 id="map和collect兩個Ruby內建的method是專門產生數列用的，可針對每一個數值進行計算。在處理hash或object的時候，可以分別設定為key和value，就可以分開處理："><a href="#map和collect兩個Ruby內建的method是專門產生數列用的，可針對每一個數值進行計算。在處理hash或object的時候，可以分別設定為key和value，就可以分開處理：" class="headerlink" title="map和collect兩個Ruby內建的method是專門產生數列用的，可針對每一個數值進行計算。在處理hash或object的時候，可以分別設定為key和value，就可以分開處理："></a>map和collect兩個Ruby內建的method是專門產生數列用的，可針對每一個數值進行計算。在處理hash或object的時候，可以分別設定為key和value，就可以分開處理：</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用於數列</span></span><br><span class="line">array = [<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>]</span><br><span class="line">array.map &#123;<span class="params">|value|</span> value * <span class="number">10</span>&#125;</span><br><span class="line"><span class="comment"># =&gt; [30, 60, 90]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用於物件</span></span><br><span class="line">hash = &#123;<span class="symbol">:name</span> =&gt; <span class="string">"Kai"</span>, <span class="symbol">:age</span> =&gt; <span class="number">27</span>, <span class="symbol">:phone</span> =&gt; <span class="string">"911"</span>&#125;</span><br><span class="line">hash.map &#123;<span class="params">|key, value|</span> value &#125;</span><br><span class="line"><span class="comment"># =&gt; ["Kai", 27, "911"]</span></span><br></pre></td></tr></table></figure>
+
+<p>map和collect用法是相同的，主要是很多其他語言當中同樣的處理方法都叫做collect，因此Ruby也提供了相同的語法給不同習慣的開發者使用。</p>
+<h1 id="把-Block-物件化"><a href="#把-Block-物件化" class="headerlink" title="把 Block 物件化"></a>把 Block 物件化</h1><p>Block 本身並不是物件，它沒辦法單獨的存在 Ruby 的世界裡，需要依附在方法或物件後面。<br>但其實也是可以把 Block 物件化，例如使用 Proc 類別：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say = Proc.new &#123; puts <span class="string">"哈囉，Ruby"</span> &#125;   <span class="comment"># 使用 Proc 類別可把 Block 物件化</span></span><br></pre></td></tr></table></figure>
+
+<p>要使用它的時候，只要執行這個物件上的 call：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">say.call <span class="comment">#印出 哈囉 Ruby</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要帶參數也可以：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">say = Proc.new &#123; <span class="params">|name|</span> puts <span class="string">"你好，<span class="subst">#&#123;name&#125;</span>"</span>&#125;</span><br><span class="line">say.call(<span class="string">"Ruby"</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Proc-呼叫方式"><a href="#Proc-呼叫方式" class="headerlink" title="Proc 呼叫方式"></a>Proc 呼叫方式</h1><p>要執行一個 Proc 物件，可以使用 call 方法，但其實還有其它好幾種使用方法，例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">say.call(<span class="string">"尼特羅會長"</span>)    <span class="comment"># 使用 call 方法</span></span><br><span class="line">say.(<span class="string">"尼特羅會長"</span>)        <span class="comment"># 使用小括號（注意，有多一個小數點）</span></span><br><span class="line">say[<span class="string">"尼特羅會長"</span>]         <span class="comment"># 使用中括號</span></span><br><span class="line">say === <span class="string">"尼特羅會長"</span>      <span class="comment"># 使用三個等號</span></span><br><span class="line">say <span class="string">"尼特羅會長"</span>    <span class="comment"># 使用 yield 方法</span></span><br></pre></td></tr></table></figure>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/09/26/it12/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/09/24/it10/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

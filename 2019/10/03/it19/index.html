@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="action view">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>action view - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            action view
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-03
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1 id="Action-View中Template概念："><a href="#Action-View中Template概念：" class="headerlink" title="Action View中Template概念："></a>Action View中Template概念：</h1><p>ActionView是Rails中處理View的元件名稱，而要提供給用戶的文件，則會用Template來呈現。</p>
+<p>在 Rails 裡，網路請求是由 Action Pack 負責處理的。此過程分成</p>
+<p>處理邏輯的 Action controller 步驟</p>
+<p>算繪模版的 Action view 步驟。</p>
+<p>什麼是Template模板呢？<br>我們知道伺服器最終提供給瀏覽器的格式是HTML文件，而Template模板就是動態產生HTML的方式。相對的說，我們用靜態HTML來稱呼不經過程式產生的HTML文件。</p>
+<p>Rails預設用來產生Template的方式是Embedded Ruby(ERb)<br>除了模版之外，網頁最終輸出的 HTML 由三種 Rails 元素組成，除了模版之外，另外還有頁面以及版型。</p>
+<p>為什麼在view的檔案名都是.erb結尾 而不是 .rb 呢</p>
+<p>ERb（嵌入式的Ruby）把一個HTML文件裡面加入Ruby代碼。</p>
+<p>將想執行的Ruby代碼，寫入 &lt;% … %&gt;之間</p>
+<p>若想將代碼打印出來的結果，則在中間加入等號 &lt;%= … %&gt;.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#show.html.erb</span></span><br><span class="line">&lt;h1&gt;時間：&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= Time.now %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接著 rails server</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191003/20118842AwlyXgUKYS.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191003/20118842AwlyXgUKYS.png</a></p>
+<p>可以看到我們在erb內 可以輸入 html格式 跟 ruby 的程式碼<br>也可以做 if / else 判斷跟迴圈</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsersController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">    @arr = [<span class="number">1</span>, <span class="number">2</span> ,<span class="number">3</span> ,<span class="number">4</span> ,<span class="number">5</span>]</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#show.html.erb</span></span><br><span class="line">&lt;% @arr.each <span class="keyword">do</span> <span class="params">|num|</span> %&gt;</span><br><span class="line">  &lt;li&gt;&lt;%= num + <span class="number">1</span>%&gt;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= end %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>迴圈內的html code也加入迴圈，因此會建立5個<li></li></p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191003/20118842rmzLx64JT7.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191003/20118842rmzLx64JT7.png</a></p>
+<h2 id="什麼是Params？"><a href="#什麼是Params？" class="headerlink" title="什麼是Params？"></a>什麼是Params？</h2><p>當網頁中有表單要做資料輸入並提交時，網頁會送出一個叫做params的參數，裡面記錄著表單裡面的值。</p>
+<p>以views/pages/form.html.erb一個網頁表單為例</p>
+<p>先設定路徑</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># routes.rb</span></span><br><span class="line">Rails.application.routes.draw <span class="keyword">do</span></span><br><span class="line">   get <span class="string">'/'</span>, <span class="symbol">to:</span> <span class="string">"pages#index"</span>                     </span><br><span class="line">   get <span class="string">'/form'</span>, <span class="symbol">to:</span> <span class="string">"pages#form"</span>  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>接著</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#form.html.erb</span></span><br><span class="line">&lt;form action=<span class="string">"/"</span> method=<span class="string">"get"</span>&gt;  <span class="comment">#使用get請求，回到'/'			</span></span><br><span class="line">    名字：&lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span>&gt;</span><br><span class="line">    年齡：&lt;input type=<span class="string">"text"</span> name=<span class="string">"age"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/form&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在controller的對應到的頁面方法中接收 params</p>
+<p>回到’/‘也就是index頁面，所以可以在index方法中接收</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pages_controller.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PagesController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">      @data = params</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">form</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#index.html.erb</span></span><br><span class="line">&lt;%= @data %&gt;  <span class="comment">#把剛剛接收到的params 印出來</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191003/20118842BPBRjeEkPJ.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191003/20118842BPBRjeEkPJ.png</a></p>
+<p>從上方結果來看：</p>
+<p>1.回傳的params是一個Hash，表單的資料便被存儲在這個Hash中。</p>
+<p>2.以input的name為key 存儲表單資料。</p>
+<p>也可以取出所需要的值</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= @data[<span class="symbol">:name</span>] %&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191003/20118842fMwtCjzczg.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191003/20118842fMwtCjzczg.png</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/10/03/devise/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/02/it18/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

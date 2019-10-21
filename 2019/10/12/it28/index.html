@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="使用 render/jbuilder 輸出 JSON 格式">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>使用 render/jbuilder 輸出 JSON 格式 - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            使用 render/jbuilder 輸出 JSON 格式
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-12
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>在開發手機應用程式或是一些前端比較吃重的網站應用程式時，常會需要跟後端伺服器交換資料，交換資料的格式常見的有 JSON 或 XML 等格式，這樣的交換介面又稱之 API（Application Programming Interface）。</p>
+<p>輸出成 JSON 格式 - 使用 render</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsersController</span> &lt; ApplicationController</span></span><br><span class="line">    <span class="comment"># ...[略]...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">      @users = User.all</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ...[略]...</span></span><br><span class="line">  <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>原本畫面是這樣</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191012/20118842zlqjXFfAtU.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191012/20118842zlqjXFfAtU.png</a></p>
+<p>這邊的 index Action 如果沒特別聲明 render 方法，它就會去 app/views/users/ 目錄下找同名的 index.html.erb 來呈現畫面，如果不需要輸出 HTML 畫面，可以把 index Action 改成這樣：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span></span></span><br><span class="line">    @users = User.all</span><br><span class="line">    render <span class="symbol">json:</span> @users</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>輸出格式變JSON後</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191012/20118842GGAMjZEv9J.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191012/20118842GGAMjZEv9J.png</a></p>
+<p>使用 postman 整理 會變成</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191012/20118842XhmruPTNIl.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191012/20118842XhmruPTNIl.png</a></p>
+<p>但這樣的寫法，原本 /users 的頁面連不上了，也就是說如果要同時可以呈現 HTML 跟 JSON，得另外想辦法：</p>
+<h1>輸出成 JSON 格式 - 使用 Jbuilder</h1>
+
+<p>當你使用 Scaffold 產生檔案的時候，在 View 的目錄裡有多一些特別的檔案：</p>
+<p>這幾個結尾是 .json.jbuilder 的檔案，就跟 .html.erb 的概念一樣，.html.erb 是指會使用 ERB 樣版引擎來解讀這個檔案，並轉換成 HTML 格式；而 .json.jbuilder 則是使用 Jbuilder 這個 gem，把結果輸出成 JSON 格式。</p>
+<p>讓我們看一下 app/views/candidates/index.json.jbuilder 這個檔案的內容：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json.array! @candidates, <span class="symbol">partial:</span> <span class="string">'candidates/candidate'</span>, <span class="symbol">as:</span> <span class="symbol">:candidate</span></span><br></pre></td></tr></table></figure>
+
+<p>看來是去 render candidates/_candidate 這個檔案，裡面的內容是：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">json.extract! candidate, <span class="symbol">:id</span>, <span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:party</span>, <span class="symbol">:politics</span>, <span class="symbol">:votes</span>, <span class="symbol">:created_at</span>, <span class="symbol">:updated_at</span></span><br><span class="line">json.url candidate_url(candidate, <span class="symbol">format:</span> <span class="symbol">:json</span>)</span><br></pre></td></tr></table></figure>
+
+<p>意思大概就是會輸出 candidate 物件的 id、name…updated_at 等欄位的資料。</p>
+<p>原本網址 <a href="http://localhost:3000/candidates" target="_blank" rel="noopener">http://localhost:3000/candidates</a> 可以看到使用者列表，如果把網址後面加上 .json 變成 <a href="http://localhost:3000/candidates.json" target="_blank" rel="noopener">http://localhost:3000/candidates.json</a> 就能得到跟前面 render json: @candidates 一樣的結果。</p>
+<p>不只如此，/candidates/2 會用 HTML 格式輸出 2 號使用者資料，如果是 /candidates/2.json 則是會以 JSON 格式輸出這筆資料。</p>
+<p>另外，如果我只想印出姓名跟 黨籍，可以把 candidates/_candidate.json.jbuilder 的內容修改成這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json.extract! candidate, :name, :party</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"巧穎"</span>,</span><br><span class="line">        <span class="attr">"party"</span>: <span class="string">"無黨籍"</span>,</span><br><span class="line">        </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line"> </span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"阿定"</span>,</span><br><span class="line">        <span class="attr">"party"</span>: <span class="string">"時代力量"</span>,</span><br><span class="line"> </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">    </span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"繆梅英"</span>,</span><br><span class="line">        <span class="attr">"party"</span>: <span class="string">"共產黨"</span>,</span><br><span class="line">   </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">   </span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"蔡英文"</span>,</span><br><span class="line">        <span class="attr">"party"</span>: <span class="string">"無黨籍"</span>,</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>使用 render json: @candidates 的寫法只能把 @candidates 的內容全部印出來，而使用 Jbuilder 則是可以微調要輸出的欄位。另一個好處就是原本 /candidates 的頁面還是可保持 HTML 的頁面呈現，只有 /users.json 的時候才會以 JSON 格式輸出。</p>
+<p>為什麼加 .json 就可以了？<br>其實這算是 Route 做的好事，先看一下 rails routes 的結果</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20191012/20118842tY2IwmwJA5.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20191012/20118842tY2IwmwJA5.png</a></p>
+<p>後面那個 (.:format) 。假設你輸入網址 /users.html，後面的附檔名就會被捕捉成 format，如果在 Controller 的 Action 沒有特別聲明要以什麼方式 render，就會依據這個 format 去找對應的檔案，也就是說會找到 app/views/index.html.erb。</p>
+<p>同理可證，當網址是輸入 /users.json，它會去找 app/views/index.json.jbuilder 來輸出結果。 而 format 的預設值是 html，所以如果後面沒有附檔名，像是 /users，則會去找 html 的樣版。</p>
+<p>參考資料：</p>
+<p><a href="https://railsbook.tw/" target="_blank" rel="noopener">為你自己學Ruby on Rails</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/10/12/gitflow/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/11/it27/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

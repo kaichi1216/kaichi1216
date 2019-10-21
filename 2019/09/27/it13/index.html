@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="模組 (module)">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>模組 (module) - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            模組 (module)
+            
+          </h1>
+          <p class="posted-on">
+          2019-09-27
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1 id="什麼是-模組-module"><a href="#什麼是-模組-module" class="headerlink" title="什麼是 模組 (module)"></a>什麼是 模組 (module)</h1><p>昨天介紹完class後，今天來談談模組(module)，不知道你們小時候有沒有玩過RPG類型的遊戲，如果有 你可以想像一下，當你的角色想要學習更厲害的招式技能時，可能會需要有技能包才能學習，模組就像是技能包這樣。</p>
+<p>在Ruby裡，類別跟模組是很相似的，我們來試試看</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts Class.superclass </span><br><span class="line"><span class="comment">#=&gt; Module</span></span><br></pre></td></tr></table></figure>
+
+<p>當我們想找class的上層時，會得到 Module 這個類別，「類別」是「模組」的後代，類別根本就是繼承自模組來的。</p>
+<p>那差別是什麼?</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前、後代的實體方法差異：</span></span><br><span class="line">p Class.instance_methods - Module.instance_methods</span><br><span class="line"></span><br><span class="line"><span class="comment">#=&gt;[:allocate, :new, :superclass]</span></span><br></pre></td></tr></table></figure>
+
+<p>allocate 跟 new 跟產生實體(instance)有關，superclass 跟繼承有關。</p>
+<p>也就是說，類別比模組多了可以「產生實體」的能力以及「繼承」的能力。</p>
+<h2 id="整理一下上面的重點"><a href="#整理一下上面的重點" class="headerlink" title="整理一下上面的重點"></a>整理一下上面的重點</h2><p>1.模組沒辦法 new 一個新的實體出來。<br>2.模組沒辦法繼承別的模組。</p>
+<h1 id="那要怎麼使用模組呢？"><a href="#那要怎麼使用模組呢？" class="headerlink" title="那要怎麼使用模組呢？"></a>那要怎麼使用模組呢？</h1><p>在Ruby定義模組， 使用的是 module</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Flyable</span>  <span class="comment">#定義模組跟類別一樣，開頭都要大寫</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">fly</span></span></span><br><span class="line">    puts <span class="string">"I can fly!"</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>寫好模組後 要套用到類別裡，使用include</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span></span></span><br><span class="line">  <span class="keyword">include</span> Flyable</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">kitty = Bird.new</span><br><span class="line">kitty.fly        <span class="comment"># =&gt; I can fly!</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣Bird就有飛行的方法囉</p>
+<h1 id="如何透過-include-prepen-和-extend-來引入-Module。"><a href="#如何透過-include-prepen-和-extend-來引入-Module。" class="headerlink" title="如何透過 include prepen 和 extend 來引入 Module。"></a>如何透過 include prepen 和 extend 來引入 Module。</h1><h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>加入模組最常用到的是 include。<br>當一個 class 使用 include 引入 Module 的時候，會將 Module 內的 method 增加為自己的 instance method：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Commentable</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">comment</span></span></span><br><span class="line">    <span class="string">'I love comments!'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span></span></span><br><span class="line">  <span class="keyword">include</span> Commentable</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Quote</span></span></span><br><span class="line">  <span class="keyword">include</span> Commentable</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Post.new.comment  <span class="comment"># =&gt; "I love comments!"</span></span><br><span class="line">Quote.new.comment <span class="comment"># =&gt; "I love comments!"</span></span><br><span class="line"></span><br><span class="line">Post.ancestors  <span class="comment"># =&gt; [Post,  Commentable, Object, Kernel, BasicObject]</span></span><br><span class="line">Quote.ancestors <span class="comment"># =&gt; [Quote, Commentable, Object, Kernel, BasicObject]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="prepend"><a href="#prepend" class="headerlink" title="prepend"></a>prepend</h1><p>而如果使用prepend 來引入 Module, 則會放在繼承練的下方</p>
+<p><a href="https://ithelp.ithome.com.tw/upload/images/20190927/20118842ZKOjsRfRMp.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20190927/20118842ZKOjsRfRMp.png</a></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Commentable</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">comment</span></span></span><br><span class="line">    <span class="string">'I love comments!'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span></span></span><br><span class="line">  prepend Commentable</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">comment</span></span></span><br><span class="line">    <span class="string">'Post and comment'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Post.new.comment <span class="comment"># =&gt; "I love comments!"</span></span><br><span class="line">Post.ancestors   <span class="comment"># =&gt; [Commentable, Post, Object, Kernel, BasicObject]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h1><p>extend 則是會將 Module 引入到 class 的 singleton class 上方。<br>也就是說 Module 的 method 會變成 class mehtod<br><a href="https://ithelp.ithome.com.tw/upload/images/20190927/20118842cYCDKQheUR.png" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/upload/images/20190927/20118842cYCDKQheUR.png</a></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Commentable</span></span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">comment</span></span></span><br><span class="line">    <span class="string">'I love comments!'</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span></span></span><br><span class="line">  extend Commentable</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">Post.comment                     <span class="comment"># =&gt; "I love comments!"</span></span><br><span class="line">Post.singleton_class.ancestors   <span class="comment"># =&gt; [#&lt;Class:Post&gt;, Commentable, ...]</span></span><br></pre></td></tr></table></figure>
+
+<p>參考資料：<br><a href="https://kaochenlong.com/2015/03/24/class-and-module/" target="_blank" rel="noopener">Ruby 語法放大鏡之「類別跟模組有什麼不一樣?」</a><br><a href="https://medium.com/@spreered/ruby-%E7%9A%84%E7%B9%BC%E6%89%BF%E9%8D%8A-2-module-%E7%9A%84-include-prepend-%E5%92%8C-extend-ae4e1c940097" target="_blank" rel="noopener">Ruby 的繼承鍊 (2) — Module 的 include、prepend 和 extend</a><br><a href="https://medium.com/rubycademy/modules-in-ruby-part-i-a2cdfaccdb6e" target="_blank" rel="noopener">Modules in Ruby: Part I</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/09/28/it14/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/09/26/it12/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
