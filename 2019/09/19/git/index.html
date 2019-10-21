@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="ruby 和 rails中的 Symbol">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>ruby 和 rails中的 Symbol - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            ruby 和 rails中的 Symbol
+            
+          </h1>
+          <p class="posted-on">
+          2019-09-19
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/css/" rel="tag">
+                  css
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1 id="安裝Git"><a href="#安裝Git" class="headerlink" title="安裝Git"></a>安裝Git</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># windows-</span><br><span class="line">$ which git                                # 查電腦裡git版本</span><br><span class="line">$ which apt-get install git</span><br><span class="line">$ sudo sudo apt-get install git             #sudo獲得權限</span><br><span class="line"></span><br><span class="line"># Mac-</span><br><span class="line"># Homebrew安裝                        </span><br><span class="line">$ brew install git</span><br><span class="line">$ git --version                                     # 查詢git版本</span><br><span class="line">$ git config --list                                 # 查看git config</span><br><span class="line">$ git config --global user.name &quot;user&quot;              # 設定User訊息</span><br><span class="line">$ git config --global user.email &quot;user@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="初始化git"><a href="#初始化git" class="headerlink" title="初始化git"></a>初始化git</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir git-demo                            # 建立新資料夾git-</span><br><span class="line">$ cd demo                                   # 進入git-practice資料 夾</span><br><span class="line">$ git init                                  # 初始化GIT版本控制</span><br><span class="line">$ git status                                # 查看目前狀態</span><br><span class="line">$ touch 01.html                             # 建立一個01.html檔案</span><br></pre></td></tr></table></figure>
+
+<h1 id="加入暫存區-add"><a href="#加入暫存區-add" class="headerlink" title="加入暫存區 add"></a>加入暫存區 add</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add 01.html                            # 將01.html加入暫存區</span><br><span class="line">$ git add *.html                             # 所有.html檔案加入暫存 </span><br><span class="line">$ git add --all                              # 將所有檔案加入暫存區</span><br><span class="line">$ git add .                                  # 將所有檔案加入暫存區</span><br></pre></td></tr></table></figure>
+
+<h1 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;init commit&quot;           # 創建commit命名init commit </span><br><span class="line">$ git commit --allow-empty -m &quot;blank&quot;   # 允許創建空的commit</span><br><span class="line">$ git commit -a -m &quot;update content&quot;     # 將未add檔案commit</span><br></pre></td></tr></table></figure>
+
+<h1 id="git-新增-改名-移除"><a href="#git-新增-改名-移除" class="headerlink" title="git 新增/改名/移除"></a>git 新增/改名/移除</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git rm welcome.html                          # 移除</span><br><span class="line">$ git rm welcome.html --cached                 # 將此檔案Untracked</span><br><span class="line">                                               #（不是真的刪除）</span><br><span class="line">$ git mv hello.html world.html                 # 重新命名</span><br><span class="line"># 追加檔案並重新命名上一次commit</span><br><span class="line">$ git commit --amend -m &quot;Welcome To Facebook&quot;  </span><br><span class="line"># 追加檔案不重新命名上一次commit</span><br><span class="line">$ git commit --amend --no-edit</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看-log"><a href="#查看-log" class="headerlink" title="查看 log"></a>查看 log</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log                               # 查看紀錄</span><br><span class="line">$ git log --oneline --graph             # 查看oneline/graph格式化紀錄</span><br><span class="line">$ git log --oneline --author=&quot;Sherly&quot;          </span><br><span class="line">$ git log --oneline --author=&quot;Sherly\|Eddie&quot;</span><br><span class="line">$ git log --oneline --grep=&quot;wtf&quot;</span><br><span class="line">#搜尋在所有Commit檔案中符合特定條件的</span><br><span class="line"></span><br><span class="line">$ git log -S &quot;Ruby&quot;</span><br><span class="line"></span><br><span class="line">#搜索時間條件               </span><br><span class="line">$ git log --oneline --since=&quot;9am&quot; --until=&quot;12am&quot;</span><br><span class="line">$ git log --oneline --since=&quot;9am&quot; --until=&quot;12am&quot; --after=&quot;2019-01&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="branch-分支相關"><a href="#branch-分支相關" class="headerlink" title="branch 分支相關"></a>branch 分支相關</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git branch                                # 查看目前Branch</span><br><span class="line">$ git branch BranchName                     # 建立名為BranchName的分支</span><br><span class="line">$ git branch -m BranchName BranchNewName    # 重新命名</span><br><span class="line">$ git branch -d BranchName                  # 刪除branch</span><br><span class="line">$ git branch -D BranchName                  # 強制刪除即使分支尚未被合併</span><br><span class="line">$ git checkout BranchName              # 切換分支</span><br><span class="line">$ git checkout -b BranchName           # 建立且切換分支</span><br><span class="line">$ git checkout -b bird 666fce7         # 在commit:666fce7建立且切換分支</span><br><span class="line">$ git branch BranchName 666fce7        # 在commit:666fce7建立分支</span><br><span class="line">$ git merge BN                         # 將當前分支合併到BN分支</span><br><span class="line">$ git merge BN --no-ff                 # 當前分支合併到BN分支，不快轉</span><br><span class="line">$ git merge b174a5a                    # 將當前分支合併到commit:b174a5a</span><br><span class="line">$ git rebase BN                        # 合併至BN並且以BN當作參考基準</span><br></pre></td></tr></table></figure>
+
+<h1 id="checkout-（移動head去查看）"><a href="#checkout-（移動head去查看）" class="headerlink" title="checkout （移動head去查看）"></a>checkout （移動head去查看）</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 01.html                      # 01.html回到上一版</span><br><span class="line">$ git checkout .                            # 所有檔案回到上一版</span><br><span class="line">$ git checkout HEAD~2 01.html               # 02.html回到上兩版</span><br><span class="line">$ git checkout HEAD~2 .                     # 所有檔案回到上兩版</span><br><span class="line">  </span><br><span class="line">$ git blame FILENAME                        # 查看每一行程式碼修改歷史</span><br><span class="line">$ git blame -L 5,10 FILENAME                # 同上指定行數5~10</span><br><span class="line">$ git log -p FILENAME</span><br></pre></td></tr></table></figure>
+
+<h1 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git reset e12d8ef^                  # reset到commit:e12d8ef的上一版</span><br><span class="line">$ git reset master^                   # reset到master分支的上一版</span><br><span class="line">$ git reset HEAD^                     # reset到head的上一版</span><br><span class="line">$ git reset HEAD~2                    # reset到head的上2版</span><br><span class="line">$ git reset b174a5a --hard            # 用--hard模式reset</span><br><span class="line">                                      #（完全清除目錄以及暫存區）</span><br><span class="line">$ git reset HEAD^ --hard                        </span><br><span class="line">$ git reset ORIG_HEAD --hard          # 回到上一個關鍵版本</span><br><span class="line">$ git reflog                          # 查看歷史紀錄（一個月內）</span><br></pre></td></tr></table></figure>
+
+<h1 id="merge解決衝突"><a href="#merge解決衝突" class="headerlink" title="merge解決衝突"></a>merge解決衝突</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase --continue              # 當遇到合併衝突時，解決後繼續</span><br><span class="line">$ git checkout --ours animal.jpg     # 當遇到衝突時，選擇目前分支的檔案</span><br><span class="line">$ git checkout --theirs animal.jpg   # 當遇到衝突時，選擇合併分支的檔案</span><br></pre></td></tr></table></figure>
+
+<h1 id="tag標籤"><a href="#tag標籤" class="headerlink" title="tag標籤"></a>tag標籤</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git tag 1.0.0 51d54ffc           # 將commit:51d54ffc 建立tag 1.0.0</span><br><span class="line">$ git checkout 1.0.0               # 查看1.0.0標籤版本</span><br></pre></td></tr></table></figure>
+
+<h1 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin url        # 在遠端加入origin節點</span><br><span class="line">$ git push origin master           # 當前分支推到遠端origin的master分支</span><br><span class="line">$ git push origin aaa:master       # 將本地aaa分支推到遠端origin的master分支</span><br><span class="line">$ git push -u origin master        # -u設定upstream，之後可以直接推送</span><br><span class="line">$ git fetch origin master          # 將遠端origin的master版本拉下來 </span><br><span class="line">                                   #（尚未merge）</span><br><span class="line">$ git pull origin master           # git pull = fetch + merge</span><br><span class="line">$ git pull --rebase                # pull使用rebase</span><br><span class="line">$ git push -f                      # --force強迫push</span><br><span class="line">$ git clone url                    # 複製一份到電腦</span><br></pre></td></tr></table></figure>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/09/19/ruby/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/09/17/test1/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
