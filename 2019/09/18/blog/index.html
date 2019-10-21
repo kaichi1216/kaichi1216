@@ -162,54 +162,93 @@ Git
 
 <p>建立完成後會出現這樣的格式</p>
 <img src="/images/blog/blog1.jpg">
-4.在本地端開啟blog網頁
-完成上述流程後，在terminal輸入啟用本地端伺服器的指令
-會看到以上的介面就代表可以囉
-5.push上github
-先在github新增一個repository，命名邏輯為
-[github account].github.io #括號內要輸入專案名稱
-例：kaichi1216.github.io
-接著按下建立repo
-請複製那段連結，然後到終端機打開你的編譯器
-我是用vscode(或其他編譯器)打開_config.yml檔案，並拉到最下面修改# Deployment的部分
-照著上面格式輸入 除了repo那段是複製自己的連結
-6.安裝git
-$ npm install hexo-deployer-git --save
-7.輸入指令，將網站佈署到伺服器上
-$ hexo deploy -g
-8.設定repository的主題
-在github的該repository頁面，進入「setting」
-往下滑會看到這個頁面
-綠色框框那個連結點進去 成功的話會顯示跟本地端的頁面一樣
-若有檔案更新，則重複輸入指令
-這點非常重要
-$ hexo deploy -g
-9.更換主題
-選擇要套用的主題(主題聯結在下)
-https://hexo.io/themes/
-我選用butterfly主題來做示範
-請點選藍色字體會連結到他的github頁面
-依照下方 README 指令
-因為使用第一個指令安裝會有出現我看不懂的問題 所以我選用第二個新的dev分支來安裝
-接著安裝完成後 請到剛剛修改過的config.yml檔案裡 找尋 theme:
-然後把它改成你要套用的主題名稱 我使用的是butterfly 所以就把預設的主題更換掉
-這裡要記住 因為我們檔案有更新 所以請記得執行甚麼？
-$ hexo deploy -g
-再回到github上看是否有新的commit更新 接著點到剛剛的連結去看 網頁是否有套用你要的主題
-網域設定
-我是在gandi購買網域的
-介面是中文所以不太需要擔心 辦好帳密後 挑一個你喜歡的網址購買
-購買完成後請到這個頁面
-到github頁面 setting 找到這段
-請把 Custom domain 裡改成你購買的網域
-將自訂網域導向Github Pages
-到Google Domain中選擇你剛剛購買的網址
-到DNS中的Custom resource records
-因為網站是架在Github上面，所以我們要增加4條A紀錄（ Github官方提供列表 ），將所有指向「自訂網域」的流量導向Github的伺服器
 
-<p>185.199.111.153<br>185.199.110.153<br>185.199.109.153<br>185.199.108.153</p>
+<h1>4.在本地端開啟blog網頁</h1>
+
+<p>完成上述流程後，在terminal輸入啟用本地端伺服器的指令<br><img src="/images/blog/blog2.jpg"><br>會看到以上的介面就代表可以囉</p>
+<h1>5.push上github</h1>
+
+<p>先在github新增一個repository，命名邏輯為</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[github account].github.io #括號內要輸入專案名稱</span><br><span class="line">例：kaichi1216.github.io</span><br></pre></td></tr></table></figure>
+
+<img src="/images/blog/blog3.jpg">
+
+<p>接著按下建立repo</p>
+<img src="/images/blog/blog4.jpg">
+
+<p>請複製那段連結，然後到終端機打開你的編譯器<br>我是用vscode(或其他編譯器)打開_config.yml檔案，並拉到最下面修改# Deployment的部分</p>
+<img src="/images/blog/blog5.jpg">
+照著上面格式輸入 除了repo那段是複製自己的連結
+<h1>6.安裝git</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h1>7.輸入指令，將網站佈署到伺服器上</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy -g</span><br></pre></td></tr></table></figure>
+
+<h1>8.設定repository的主題</h1>
+
+<p>在github的該repository頁面，進入「setting」</p>
+<img src="/images/blog/blog6.jpg">
+
+<p>往下滑會看到這個頁面</p>
+<img src="/images/blog/blog7.jpg">
+
+<p>綠色框框那個連結點進去 成功的話會顯示跟本地端的頁面一樣</p>
+<h1>若有檔案更新，則重複輸入指令</h1>
+這點非常重要
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy -g</span><br></pre></td></tr></table></figure>
+
+<h1>9.更換主題</h1>
+選擇要套用的主題(主題聯結在下)
+
+<p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>我選用butterfly主題來做示範</p>
+<img src="/images/blog/blog8.jpg">
+
+<p>請點選藍色字體會連結到他的github頁面</p>
+<img src="/images/blog/blog9.jpg">
+
+<p>依照下方 README 指令</p>
+<img src="/images/blog/blog10.jpg">
+
+<p>因為使用第一個指令安裝會有出現我看不懂的問題 所以我選用第二個新的dev分支來安裝<br>接著安裝完成後 請到剛剛修改過的config.yml檔案裡 找尋 theme:</p>
+<img src="/images/blog/blog11.jpg">
+
+<p>然後把它改成你要套用的主題名稱 我使用的是butterfly 所以就把預設的主題更換掉<br>這裡要記住 因為我們檔案有更新 所以請記得執行甚麼？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy -g</span><br></pre></td></tr></table></figure>
+
+<p>再回到github上看是否有新的commit更新 接著點到剛剛的連結去看 網頁是否有套用你要的主題</p>
+<h1>網域設定</h1>
+
+<p>我是在gandi購買網域的</p>
+<img src="/images/blog/blog12.jpg">
+
+<p>介面是中文所以不太需要擔心 辦好帳密後 挑一個你喜歡的網址購買<br>購買完成後請到這個頁面</p>
+<img src="/images/blog/blog13.jpg">
+
+<p>到github頁面 setting 找到這段</p>
+<img src="/images/blog/blog14.jpg">
+
+<p>請把 Custom domain 裡改成你購買的網域</p>
+<h1>將自訂網域導向Github Pages</h1>
+
+<p>1.到Google Domain中選擇你剛剛購買的網址<br>2.到DNS中的Custom resource records<br>3.因為網站是架在Github上面，所以我們要增加4條A紀錄（ Github官方提供列表 ），將所有指向「自訂網域」的流量導向Github的伺服器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.111.153</span><br><span class="line">185.199.110.153</span><br><span class="line">185.199.109.153</span><br><span class="line">185.199.108.153</span><br></pre></td></tr></table></figure>
+
 <p>增加CNAME紀錄為你的網域新增別名，讓輸入reponame.github.io.網址的人也能導向你剛剛購買的網域</p>
-<p>到hexo的source資料夾內新增CANME檔案，裡面寫上你剛剛購買的域名，避免在執行hexo generate產生新動態檔案的時候會覆蓋Github Pages setting內的域名。<br>修改Hexo的網站配置文件<br>最後一步就是要來修改Hexo的網站配置文件了，打開config.yml檔案，找到url那行，更改程式碼如下：<br>記得更改完後要<br>$ hexo deploy -g<br>接下來試著將網誌上傳到Github上面，再輸入你剛剛購買的網域<a href="http://www.xxx.com，就可以成功看到你的網誌啦！" target="_blank" rel="noopener">www.xxx.com，就可以成功看到你的網誌啦！</a></p>
+<h2>到hexo的source資料夾內新增CANME檔案，裡面寫上你剛剛購買的域名，避免在執行hexo generate產生新動態檔案的時候會覆蓋Github Pages setting內的域名。</h2>
+
+<img src="/images/blog/blog15.jpg">
+
+<h1>修改Hexo的網站配置文件</h1>
+
+<p>最後一步就是要來修改Hexo的網站配置文件了，打開config.yml檔案，找到url那行，更改程式碼如下：</p>
+<img src="/images/blog/blog16.jpg">
+
+<p>記得更改完後要</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy -g</span><br></pre></td></tr></table></figure>
+
+<p>接下來試著將網誌上傳到Github上面，再輸入你剛剛購買的網域<a href="http://www.xxx.com，就可以成功看到你的網誌啦！" target="_blank" rel="noopener">www.xxx.com，就可以成功看到你的網誌啦！</a></p>
 
         </div>
       </article>
