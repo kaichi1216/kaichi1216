@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Form Builder">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>Form Builder - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Form Builder
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-04
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>當你使用form_for或fields_for時，FormBuilder 物件就會被產生</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= form_for User.new <span class="keyword">do</span> <span class="params">|form|</span> %&gt;</span><br><span class="line">  &lt;%= form.submit %&gt;</span><br><span class="line">&lt;% <span class="keyword">end</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>檢視網頁原始碼可以看到，他幫你做了一個form裡面自動帶有Token以button，並且對應到你傳入的User.new 對應類別</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"new_user"</span> <span class="attr">id</span>=<span class="string">"new_user"</span> <span class="attr">action</span>=<span class="string">"/users"</span> <span class="attr">accept-charset</span>=<span class="string">"UTF-8"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span>	</span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"utf8"</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">value</span>=<span class="string">"&amp;#x2713;"</span> /&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"authenticity_token"</span> <span class="attr">value</span>=<span class="string">"fDK23131fdkfksfdof2133lzfixgDSDKSDKsa1213DW56DKODb4nZNq4uPqS4yB1blMA=="</span> /&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">name</span>=<span class="string">"button"</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Create User<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這樣可以知道FromBuilder方法其實就是幫你產生html中的各種input。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= form_for User.new <span class="keyword">do</span> <span class="params">|form|</span> %&gt;</span><br><span class="line">  &lt;%= form.label <span class="symbol">:name</span>, <span class="string">'姓名'</span> %&gt;</span><br><span class="line">  &lt;%= form.text_field <span class="symbol">:name</span> %&gt;</span><br><span class="line">  &lt;%= form.label <span class="symbol">:age</span>, <span class="string">'年紀'</span> %&gt;</span><br><span class="line">  &lt;%= form.text_field <span class="symbol">:age</span> %&gt;</span><br><span class="line">  &lt;%= form.button %&gt;</span><br><span class="line">&lt;% <span class="keyword">end</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--檢視原始碼--&gt;</span><br><span class="line">&lt;form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"&gt; </span><br><span class="line">    </span><br><span class="line">	&lt;!--先省略token--&gt;</span><br><span class="line">  &lt;label <span class="keyword">for</span>=<span class="string">"user_name"</span>&gt;姓名&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">  &lt;input type="text" name="user[name]" id="user_name" /</span>&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;label <span class="keyword">for</span>=<span class="string">"user_age"</span>&gt;年紀&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">  &lt;input type="text" name="user[age]" id="user_age" /</span>&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;button name=<span class="string">"button"</span> type=<span class="string">"submit"</span>&gt;Create User&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/form</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>.label 對應到<label>標籤<br>.text_field 對應到<input type="tet">標籤<br>會幫你把class/id/name等資料自動產出，甚至都幫你猜測aciont以及method，一系列對應到剛剛傳入的User這個類別</label></p>
+<p>送出表單資料，實際把parmas印出來看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;utf8&quot;=&gt;&quot;✓&quot;, &quot;authenticity_token&quot;=&gt;&quot;fDK23131fdkfksfdof2133lzfixgDSDKSDKsa1213DW56DKODb4nZNq4uPqS4yB1blMA==&quot;, &quot;user&quot;=&gt;&#123;&quot;name&quot;=&gt;&quot;Kai&quot;, &quot;age&quot;=&gt;&quot;20&quot;, &quot;gender&quot;=&gt;&quot;M&quot;&#125;, &quot;button&quot;=&gt;&quot;&quot;, &quot;controller&quot;=&gt;&quot;users&quot;, &quot;action&quot;=&gt;&quot;create&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到parmas回傳的資料中，表單資料的內容被包在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;user&quot;=&gt;&#123;&quot;name&quot;=&gt;&quot;Kai&quot;, &quot;age&quot;=&gt;&quot;20&quot;, &quot;gender&quot;=&gt;&quot;M&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以可以知道：我們直接從去找params裡面選到user這個key，就可以把整包資料寫進資料庫了</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UsersController</span> &lt; ApplicationController</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">index</span>   </span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">new</span></span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create</span></span></span><br><span class="line">    <span class="comment"># 寫入資料庫</span></span><br><span class="line">    clean_params = params.<span class="keyword">require</span>(<span class="symbol">:user</span>).permit(<span class="symbol">:name</span>, <span class="symbol">:age</span>, <span class="symbol">:gender</span>)</span><br><span class="line">    @user = User.new(clean_params)</span><br><span class="line">    @user.save</span><br><span class="line">    redirect_to root_path</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>記得要先清洗，否則會出現 ForbiddenAttributesError</p>
+<img src="/images/form/form1.jpg">
+
+<p>備註：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Action Controller :: Parameters中提供兩個法： require and permit 讓你可以篩選（清洗）資料</span><br><span class="line">require (:user) 可以選擇key</span><br><span class="line">permit(:name, :age, :gender)則可以篩選裡面的屬性</span><br><span class="line">資料來源：ActionController::Parameters</span><br></pre></td></tr></table></figure>
+
+<h1>Form Helper</h1>
+
+<p>FormTagHelper則是另一種產出html 的方式，他不用仰賴 Active Record object，也就是不用使用form_for 或fields_for就可以建立物件。<br>舉例如下：單獨一個就可以直接建立tag</p>
+<p>button 按鈕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= button_tag  %&gt;</span><br><span class="line">&lt;button name=&quot;button&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>超連結</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= link_to &apos;About&apos;, about_path %&gt;</span><br><span class="line">&lt;a href=&quot;/about&quot;&gt;About&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/10/05/db/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/04/model/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>

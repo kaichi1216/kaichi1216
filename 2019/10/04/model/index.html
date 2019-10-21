@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="檢查資料是否有寫進資料庫">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>檢查資料是否有寫進資料庫 - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            檢查資料是否有寫進資料庫
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-04
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>關聯關係有以下幾種：</p>
+<ul>
+<li>belongs_to</li>
+<li>has_one</li>
+<li>has_many</li>
+<li>has_many :through</li>
+<li>has_one :through</li>
+<li>has_and_belongs_to_many</li>
+</ul>
+
+<h1>一對一關係：belongs_to/has_one</h1>
+
+<p>belongs_to 關聯宣告一個 Model 實體，屬於另一個 Model 實體。has_one 關聯建立兩個 Model 之間的一對一關係，但語義和結果與 belongs_to 不同。has_one 關聯宣告一個 Model 實體，含有（或持有）另一個 Model 實體。</p>
+<p>一對一的關係其實很好理解，舉例來說： 每一個使者者(User)只有一個登入帳號(Account)<br>先建立model：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rails g model User name email</span><br><span class="line">$ rails g model Account account_number user_id:integer</span><br><span class="line">$ rails db:migrate</span><br></pre></td></tr></table></figure>
+
+<p>這邊要注意的是，我們在Account這個Model建立一個user_id:integer，他主要是用來跟User這個Tabel的User.id做連結（這個概念其實叫做外部鍵foreign key），在Rails的慣例中，他會是對應到的Model名稱_id。<br>剛剛建立的只是兩個Model的架構，現在要幫兩個Model建立關聯：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_one <span class="symbol">:account</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以直接從字面上的意思去解讀：<br>User這個類別只對應到一個(has_one) Account，<br>每一個Account都是屬於(belongs_to) User的。<br>belongs_to/ has_one 關聯方法<br>設定關聯後，Model 可以使用這些實體方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.user</span><br><span class="line">.user=</span><br><span class="line">.build_user</span><br><span class="line">.create_user</span><br></pre></td></tr></table></figure>
+
+<p>而User 這個Model 可以使用這些實體方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.account</span><br><span class="line">.account=</span><br><span class="line">.build_account</span><br><span class="line">.create_account</span><br></pre></td></tr></table></figure>
+
+<p>我們來進 console 試玩看看：<br>先建立user 跟 account</p>
+<img src="/images/model/model1.png">
+
+<img src="/images/model/model2.png">
+
+
+<p>其實不一定要做兩邊的宣告</p>
+<p>假設你只在Account宣告belongs_to User，而沒有在User宣告has_one；那就只有Account擁有這些方法，能夠用act1.user讀取到User，User則無法讀取Acccount，反之亦然；但如果你沒有從User讀取Acccount的需求，不寫他的has_one也無妨，宣告只是方便互相做讀寫。<br>設定 account belong_to user</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>user 不做設定</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">act1.user		   <span class="comment">#讀取成功</span></span><br><span class="line">user1.account			<span class="comment">#錯誤</span></span><br><span class="line"></span><br><span class="line">註：在Rails5後，在沒有User的情況下create一個Acount，其實是寫不進去的。</span><br><span class="line">這是 Rails <span class="number">5</span> 之後對 belongs_to 加入的新限制，需要有User才能建立Account。</span><br></pre></td></tr></table></figure>
+
+<h1>一對多關係：belongs_to/has_may</h1>
+
+<p>has_many 關聯建立兩個 Model 之間的一對多關係。通常 has_many 另一邊對應的是 belongs_to 關聯。has_many 關聯宣告一個 Model 實體，有零個或多個Model 實體。</p>
+<p>舉例來說：每個 User 有多個 friend</p>
+<p>先建立Friend的Model，user_id同樣用來跟User做連結</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rails generate model Friend name:string user_id:integer</span><br><span class="line">$ rails db:migrate</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ApplicationRecord</span></span><br><span class="line">  has_one <span class="symbol">:account</span></span><br><span class="line">  has_many <span class="symbol">:friends</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Friend</span> &lt; ApplicationRecord</span></span><br><span class="line">  belings_to <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>對應到我們的model，user可以使用以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.friends(force_reload = false)</span><br><span class="line">.friends &lt;&lt; (object, ...)</span><br><span class="line">.friends.delete(object, ...)</span><br><span class="line">.friends.destroy(object, ...)</span><br><span class="line">.friends=(objects)</span><br><span class="line">.friend_ids</span><br><span class="line">.friend_ids=(ids)</span><br><span class="line">.friends.clear</span><br><span class="line">.friends.empty?</span><br><span class="line">.friends.size</span><br><span class="line">.friends.find(...)</span><br><span class="line">.friends.where(...)</span><br><span class="line">.friends.exists?(...)</span><br><span class="line">.friends.build(attributes = &#123;&#125;, ...)</span><br><span class="line">.friends.create(attributes = &#123;&#125;)</span><br><span class="line">.friends.create!(attributes = &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>建立 user 有三個 friend</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user1.friends &lt;&lt; Friend.new(name:&apos;friend1&apos;)</span><br><span class="line">user1.friends &lt;&lt; Friend.new(name:&apos;friend2&apos;)</span><br><span class="line">user1.friends &lt;&lt; Friend.new(name:&apos;friend3&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>查詢user1的所有朋友</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User.friend.all</span><br></pre></td></tr></table></figure>
+
+<img src="/images/model/model3.png">
+
+<h1>多對多關係：has_many :through 關聯</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">has_many :through 關聯通常用來建立兩個 Model 之間的多對多關係。has_many :through關聯透過（through）第三個 Model，宣告一個 Model 實體，可有零個或多個另一個 Model 實體。</span><br></pre></td></tr></table></figure>
+
+<p>舉個醫療的例子，病患 需要透過 預約來見“中醫師”。相對應的宣告如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Physician</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:appointments</span></span><br><span class="line">  has_many <span class="symbol">:patients</span>, <span class="symbol">through:</span> <span class="symbol">:appointments</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Appointment</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  belongs_to <span class="symbol">:physician</span></span><br><span class="line">  belongs_to <span class="symbol">:patient</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Patient</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:appointments</span></span><br><span class="line">  has_many <span class="symbol">:physicians</span>, <span class="symbol">through:</span> <span class="symbol">:appointments</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h1>belongs_to 關聯支援選項：</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rails 的預設設定足夠應付多數狀況，但總會有需要客製化 belongs_to 關聯行為的時候。這種時候透過傳入選項，以及建立關聯時，便可輕易完成</span><br></pre></td></tr></table></figure>
+
+<img src="/images/model/model4.png">
+
+<p>參考資料：<br><a href="https://railsbook.tw/" target="_blank" rel="noopener">為你自己學ruby on rails</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2019/10/04/form/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+        </div>
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/03/devise/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
