@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="即時通訊傳送 giphy 貼圖">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>即時通訊傳送 giphy 貼圖 - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            即時通訊傳送 giphy 貼圖
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-17
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>在製作 demo 作品的時候 我分派到的票有 第三方登入 emoji 貼圖 giphy 動態貼圖<br>，剛開始領到票實作後 發現 這根本都是要用 js  jquery 來寫啊， 整個超級崩潰，<br>當時對 js 完全生疏 連起手式要怎麼寫都不知道 ， 就邊上網查資料 邊實作測試，最後<br>終於實作出來，寫這篇 最主要是記錄自己當初怎麼研究 跟遇到問題怎麼處理，後來實作<br>出來後，覺得 其實js 也沒這麼討厭麻 還很好玩呢！</p>
+<h1 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h1><p>首先你必須要先去 giphy 官網註冊 並申請金鑰</p>
+<p><a href="https://giphy.com/" target="_blank" rel="noopener">https://giphy.com/</a></p>
+<img src="/images/giphy/giphy1.jpg">
+
+<p>申請的時候他會詢問你 需要用此API 做什麼用途 基本上簡單填寫就好<br>接著 到 Dashboard 這邊 就會顯示像這樣 API KEY</p>
+<img src="/images/giphy/giphy2.jpg">
+
+<p>就可以開始寫 code 囉</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//我是使用 ror 來寫 所以會需要在一開始 加上 turbolinks:load 這段 已讓網頁在載入時會讀取</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'turbolinks:load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//這段是 當我點擊後 giphy搜尋列表可以收合</span></span><br><span class="line">    $(<span class="string">"#giphy_icon"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>($(<span class="string">"#giphy_list"</span>).is(<span class="string">":hidden"</span>))&#123;</span><br><span class="line">            $(<span class="string">"#giphy_list"</span>).show();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $(<span class="string">"#giphy_list"</span>).hide();</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">        $(<span class="built_in">document</span>).one(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            $(<span class="string">"giphy_list"</span>).hide();</span><br><span class="line">        &#125;);</span><br><span class="line">     </span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">"#giphy_icon"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> apiKey =<span class="string">'你的API KEY'</span>;</span><br><span class="line">    <span class="keyword">var</span> query = <span class="string">'cat'</span>;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">"https://api.giphy.com/v1/gifs/search?api_key="</span>+apiKey+<span class="string">"&amp;q="</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">"#giphy_list form"</span>);</span><br><span class="line">    <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">'#giphy_list input[type="text"]'</span>);</span><br><span class="line">    <span class="keyword">var</span> result = <span class="built_in">document</span>.querySelector(<span class="string">"#giphy_list .result"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        query = input.value;</span><br><span class="line">        makeRequest(query);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">createGif</span>(<span class="params">gif,url</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> item = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">        <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">        </span><br><span class="line">        img.src = gif;</span><br><span class="line">        </span><br><span class="line">        result.appendChild(item);</span><br><span class="line">        item.appendChild(img);</span><br><span class="line">        img.addEventListener(<span class="string">'click'</span>, sendImgMarkDown);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">makeRequest</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> response = <span class="built_in">JSON</span>.parse(<span class="keyword">this</span>.responseText);</span><br><span class="line">            <span class="built_in">console</span>.log(response)</span><br><span class="line">            response.data.map(<span class="function"><span class="keyword">function</span>(<span class="params">gif</span>)</span>&#123;</span><br><span class="line">            createGif(gif.images.fixed_height_downsampled.url,gif.url)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.open(</span><br><span class="line">            <span class="string">"GET"</span>,</span><br><span class="line">        url+query,</span><br><span class="line">            <span class="literal">true</span></span><br><span class="line">        );</span><br><span class="line">        xhr.send();</span><br><span class="line">        $(<span class="string">"#giphy_form"</span>).val(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    form.addEventListener(<span class="string">"submit"</span>, search);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因為我們的即時聊天 有支援md 語法 所以我只要把giphy的網址 放進 md語法內 就可以在頁面顯示giphy動態貼圖囉</span></span><br><span class="line"><span class="comment">//md 的語法是這樣  ![這裡填寫的是當網址有錯誤後 要顯示的文字](輸入giphy貼圖的網址)</span></span><br><span class="line"><span class="comment">//示範  ![此圖無法顯示](https://media.giphy.com/media/JQMeUrXpiZ3M79iOQl/giphy.gif)</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sendImgMarkDown</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> markdown = <span class="string">'![此圖無法顯示]('</span>+ <span class="keyword">this</span>.src +<span class="string">')'</span>;</span><br><span class="line">        <span class="keyword">var</span> inputgiphy = <span class="built_in">document</span>.querySelector(<span class="string">"#message_input"</span>); </span><br><span class="line">        inputgiphy.value = markdown;</span><br><span class="line">        $(<span class="string">"#new_message"</span>).submit();</span><br><span class="line">        $(<span class="string">"#giphy_resault"</span>).empty();</span><br><span class="line">        $(<span class="string">"#giphy_list"</span>).hide();</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我的html 結構</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"giphy_icon"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://img.icons8.com/metro/26/000000/gif.png"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'giphy_list'</span> <span class="attr">style</span>=<span class="string">" display:none"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"search"</span> <span class="attr">id</span>=<span class="string">"giphy_search"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"輸入想尋找的giphy"</span> <span class="attr">id</span>=<span class="string">"giphy_form"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"result"</span> <span class="attr">id</span>=<span class="string">"giphy_resault"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>頁面顯示</p>
+<img src="/images/giphy/giphy3.jpg">
+
+<img src="/images/giphy/giphy4.jpg">
+
+<img src="/images/giphy/giphy5.jpg">
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/12/gitflow/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
