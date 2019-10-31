@@ -15,7 +15,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="ruby 和 rails中的 Symbol">
+      <meta property="og:title" content="feature 測試">
   
   <!--Open Graph Description-->
   
@@ -32,7 +32,7 @@
 
   <!-- Title -->
   
-  <title>ruby 和 rails中的 Symbol - K7</title>
+  <title>feature 測試 - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -112,21 +112,17 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            ruby 和 rails中的 Symbol
+            feature 測試
             
           </h1>
           <p class="posted-on">
-          2019-09-19
+          2019-09-25
           </p>
           <div class="tags-links">
             
               
                 <a href="/tags/前後端開發/" rel="tag">
                   前後端開發
-                </a>
-              
-                <a href="/tags/css/" rel="tag">
-                  css
                 </a>
               
                 <a href="/tags/Ruby 0n Rails/" rel="tag">
@@ -142,24 +138,19 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy = 寫程式一時爽，一直寫一直爽</span><br></pre></td></tr></table></figure>
-
-<div>
-剛開始學ruby的時候，看到一個變數前面有個 " : "符號，那時想說這到底是什麼鬼東西，在寫的時候也很疑惑， 他跟變數有什麼差別，跟什麼時機要使用它呢？
-上圖的意思是happy是一個變數 然後他指向給`寫程式一時爽，一直寫一直爽`，變數跟Symbol不一樣的地方是，沒有`寫程式一時爽，一直寫一直爽`這個字串指向 happy的話，happy是沒辦法單獨存在的，但Symbol可以，因為他本身不需指向任何東西也可以拿來使用
-</div>
-
-<h1>Symbol 跟字串的差別？</h1>
+          <h1>feature 測試</h1>
 
 <p>
-Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意思就是不能被修改的，還有就是Symbol的效能比字串稍微好一點 如下圖
+當初在上課時有教到spec測試，但自己實作後 助教說也要做 feature 測試，我當時聽到
+心裡OS: 蛤？ feature 測試是什麼鬼東西？ 查了資料後 我的理解是 feature 測試是以
+使用者的角度 來寫測試 所以跟一般spec測試不太一樣 以下是 任務清單的 主頁 新增頁 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">5.times do</span><br><span class="line">   puts &apos;寫程式一時爽， 一直寫一直爽！！！&apos;.object_id</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">=&gt;</span><br><span class="line">70235554609420</span><br><span class="line">70235554609060</span><br><span class="line">70235554608840</span><br><span class="line">70235554608700</span><br><span class="line">70235554608580</span><br></pre></td></tr></table></figure>
+</p><p>主頁<br><img src="/images/feature/feature1.png"></p>
+<p>新增頁面<br><img src="/images/feature/feature2.png"></p>
+<p>檢視網頁原始碼<br><img src="/images/feature/feature3.png"></p>
+<h2>可以比對上方的圖示跟下方的程式碼來比對</h2>
 
-</p><p>字串的話，每次都會產生不同的記憶體，等於是五個不同的物件存在記憶體了，Symbol就都是相同的物件id，相對的就節省記憶體的空間。</p>
-<p>要怎麼知道哪時要使用字串或symbol呢？</p>
-<p>比較常見的是 Hash裡面的Key，因為Symbol的不可變的特性，查詢速度快，字串的使用時機例如 想把畫面上的內容印出來就可以使用，因為如果使用Symbol的話，還是要先轉成字串在印出。</p>
-<p></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#這是一個任務清單 </span></span><br><span class="line">RSpec.feature <span class="string">"Tasks"</span>, <span class="symbol">type:</span> <span class="symbol">:feature</span> <span class="keyword">do</span></span><br><span class="line">  scenario <span class="string">"建立新的任務"</span> <span class="keyword">do</span></span><br><span class="line">    <span class="comment">#先進入主頁</span></span><br><span class="line">    visit tasks_path</span><br><span class="line">    <span class="comment">#點擊新增任務</span></span><br><span class="line">    click_on <span class="string">"新增任務"</span></span><br><span class="line">    <span class="comment">#這邊 fill_in 是輸入 eat </span></span><br><span class="line">    fill_in(<span class="string">'標題'</span>, <span class="symbol">with:</span> <span class="string">"eat"</span>)</span><br><span class="line">    <span class="comment">#這裡就要注意了 我在這邊卡了一下 原來是要開啟檢視網頁原始碼 去找他的id 可以從上圖看到第一個id是 task_deadline_1i 第二個是 task_deadline_2i </span></span><br><span class="line">    select <span class="string">'2014'</span>, <span class="symbol">from:</span> <span class="string">'task_deadline_1i'</span></span><br><span class="line">    select <span class="string">'十月'</span>, <span class="symbol">from:</span> <span class="string">'task_deadline_2i'</span></span><br><span class="line">    select <span class="string">'24'</span>, <span class="symbol">from:</span> <span class="string">'task_deadline_3i'</span></span><br><span class="line">    select <span class="string">'23'</span>, <span class="symbol">from:</span> <span class="string">'task_deadline_4i'</span></span><br><span class="line">    select <span class="string">'10'</span>, <span class="symbol">from:</span> <span class="string">'task_deadline_5i'</span></span><br><span class="line">    fill_in(<span class="string">'內容'</span>, <span class="symbol">with:</span> <span class="string">"eat steak"</span>)</span><br><span class="line">    <span class="comment">#寫完後 就可以按送出</span></span><br><span class="line">    click_on <span class="string">"送出"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#可以期望 頁面會有一個任務名為 eat 跟 上方會顯示新增任務成功 </span></span><br><span class="line">    expect(page).to have_content <span class="string">"eat"</span></span><br><span class="line">    expect(page).to have_content <span class="string">"新增任務成功"</span></span><br><span class="line">    expect(Task.first.task).to eq <span class="string">"eat"</span></span><br><span class="line">    expect(Task.first.deadline).to eq <span class="string">"2014-10-24 23:10:00.000000000 +0800"</span></span><br><span class="line">    expect(Task.first.content).to eq <span class="string">"eat steak"</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
         </div>
       </article>
     </div>
@@ -178,12 +169,12 @@ Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意�
     <div class="nav-links">
       
         <div class="nav-previous">
-          <a href="/2019/09/22/task01/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+          <a href="/2019/09/25/it11/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
         </div>
       
       
         <div class="nav-next">
-          <a href="/2019/09/19/git/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/09/24/it10/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>

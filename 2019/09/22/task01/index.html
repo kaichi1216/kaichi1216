@@ -15,7 +15,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="ruby 和 rails中的 Symbol">
+      <meta property="og:title" content="spec 測試">
   
   <!--Open Graph Description-->
   
@@ -32,7 +32,7 @@
 
   <!-- Title -->
   
-  <title>ruby 和 rails中的 Symbol - K7</title>
+  <title>spec 測試 - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -112,21 +112,17 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            ruby 和 rails中的 Symbol
+            spec 測試
             
           </h1>
           <p class="posted-on">
-          2019-09-19
+          2019-09-22
           </p>
           <div class="tags-links">
             
               
                 <a href="/tags/前後端開發/" rel="tag">
                   前後端開發
-                </a>
-              
-                <a href="/tags/css/" rel="tag">
-                  css
                 </a>
               
                 <a href="/tags/Ruby 0n Rails/" rel="tag">
@@ -142,24 +138,19 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy = 寫程式一時爽，一直寫一直爽</span><br></pre></td></tr></table></figure>
-
-<div>
-剛開始學ruby的時候，看到一個變數前面有個 " : "符號，那時想說這到底是什麼鬼東西，在寫的時候也很疑惑， 他跟變數有什麼差別，跟什麼時機要使用它呢？
-上圖的意思是happy是一個變數 然後他指向給`寫程式一時爽，一直寫一直爽`，變數跟Symbol不一樣的地方是，沒有`寫程式一時爽，一直寫一直爽`這個字串指向 happy的話，happy是沒辦法單獨存在的，但Symbol可以，因為他本身不需指向任何東西也可以拿來使用
-</div>
-
-<h1>Symbol 跟字串的差別？</h1>
-
+          <h1>在寫 spec 測試的時候遇到的問題</h1>
 <p>
-Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意思就是不能被修改的，還有就是Symbol的效能比字串稍微好一點 如下圖
+最近在寫18銅人的時候，測試搞了我快半天的時間找不出問題在哪！好險有KT大神幫忙
+才讓迷途的小羔羊找到出口，寫這篇記錄一下自己採到的雷
+</p>
+<p>
+情況是這樣的 寫feature測試時 我建立一個 任務清單 預設值是 pending 我想要編輯這個任務
+更改任務狀態為 processing 這時期望會得到任務狀態為 processing 但跑 rspec 怎麼跑都
+不會過，原因是 當你編輯完後 要 reload 不然得到的結果會是原本的 pending 狀態
+</p>
+<h2>附上程式碼</h2>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">5.times do</span><br><span class="line">   puts &apos;寫程式一時爽， 一直寫一直爽！！！&apos;.object_id</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">=&gt;</span><br><span class="line">70235554609420</span><br><span class="line">70235554609060</span><br><span class="line">70235554608840</span><br><span class="line">70235554608700</span><br><span class="line">70235554608580</span><br></pre></td></tr></table></figure>
-
-</p><p>字串的話，每次都會產生不同的記憶體，等於是五個不同的物件存在記憶體了，Symbol就都是相同的物件id，相對的就節省記憶體的空間。</p>
-<p>要怎麼知道哪時要使用字串或symbol呢？</p>
-<p>比較常見的是 Hash裡面的Key，因為Symbol的不可變的特性，查詢速度快，字串的使用時機例如 想把畫面上的內容印出來就可以使用，因為如果使用Symbol的話，還是要先轉成字串在印出。</p>
-<p></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#創建兩個任務</span></span><br><span class="line">let(<span class="symbol">:task2</span>) &#123; create(<span class="symbol">:task</span>, <span class="symbol">deadline:</span> Time.now.yesterday, <span class="symbol">priority:</span> <span class="string">"low"</span>) &#125;</span><br><span class="line">let(<span class="symbol">:task3</span>) &#123; create(<span class="symbol">:task</span>, <span class="symbol">deadline:</span> Time.now, <span class="symbol">priority:</span> <span class="string">"middle"</span>) &#125;</span><br><span class="line"></span><br><span class="line">scenario <span class="string">"建立2個任務後 更改狀態"</span> <span class="keyword">do</span></span><br><span class="line">    task2</span><br><span class="line">    task3</span><br><span class="line"></span><br><span class="line">    visit edit_task_url(task2.id)</span><br><span class="line">    select <span class="string">'processing'</span>, <span class="symbol">from:</span> <span class="string">'task_state'</span></span><br><span class="line">    click_on <span class="string">"送出"</span></span><br><span class="line">    <span class="comment">#進到index頁面</span></span><br><span class="line">    visit tasks_path</span><br><span class="line"></span><br><span class="line">    <span class="comment">#這邊要加上 reload 不然得到的結果會是 pending 第一筆資料的狀態修改後為 processing 第二筆資料建立時預設值是 pending</span></span><br><span class="line">    expect(task2.reload.state).to eq <span class="string">"processing"</span></span><br><span class="line">    expect(task3.state).to eq <span class="string">"pending"</span></span><br><span class="line">    expect(find(<span class="string">'table tbody tr:nth-child(1) td:nth-child(3)'</span>)).to have_content(<span class="string">"處理中"</span>)</span><br><span class="line">    expect(find(<span class="string">'table tbody tr:nth-child(2) td:nth-child(3)'</span>)).to have_content(<span class="string">"未處理"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
         </div>
       </article>
     </div>
@@ -178,12 +169,12 @@ Symbol跟字串蠻相似的 ，不過Symbol是不可變的字串(immutable)意�
     <div class="nav-links">
       
         <div class="nav-previous">
-          <a href="/2019/09/22/task01/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+          <a href="/2019/09/23/heroku/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
         </div>
       
       
         <div class="nav-next">
-          <a href="/2019/09/19/git/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/09/19/ruby/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>
