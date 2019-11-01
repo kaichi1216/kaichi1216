@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="初次設定 TravisCI">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>初次設定 TravisCI - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            初次設定 TravisCI
+            
+          </h1>
+          <p class="posted-on">
+          2019-10-29
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1>Rails postgresql 測試 導入 travisCI </h1>
+
+<p>
+Travis Cl 是讓你每次推上GitHub自動幫你跑Rspec
+
+</p><p>首先 先去註冊 並連結 GitHub </p>
+<img src="/images/travis/travis1.png">
+
+<p>接著在專案內 安裝 gem<br>我是安裝在 test and development </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;travis&apos;, &apos;~&gt; 1.8&apos;, &apos;&gt;= 1.8.10&apos;</span><br></pre></td></tr></table></figure>
+
+<p>接著在終端機輸入你的 GitHub 帳號登入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis login</span><br></pre></td></tr></table></figure>
+
+<p>登入成功後 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis init     #產生.travis.yml</span><br></pre></td></tr></table></figure>
+
+<p>編輯.travis.yml設定檔</p>
+<p>設定語言以及Ruby版本：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">language:</span> ruby</span><br><span class="line"><span class="symbol">rvm:</span></span><br><span class="line">- <span class="number">2.6</span>.<span class="number">3</span></span><br><span class="line"><span class="symbol">services:</span></span><br><span class="line">  - postgresql</span><br><span class="line"><span class="symbol">env:</span></span><br><span class="line">  - DB=pgsql</span><br><span class="line"><span class="symbol">before_script:</span></span><br><span class="line">  - psql -c <span class="string">'create database test18_test;'</span> -U postgres</span><br><span class="line"><span class="symbol">script:</span></span><br><span class="line">  - bundle exec rake <span class="symbol">db:</span>setup</span><br><span class="line">  - RAILS_ENV=test bundle exec rake <span class="symbol">db:</span>migrate</span><br><span class="line">  - bundle exec rake spec</span><br></pre></td></tr></table></figure>
+
+<p>資料庫環境設置，測試資料庫名稱要和上面一致</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">default:</span> &amp;default</span><br><span class="line">  <span class="symbol">adapter:</span> postgresql</span><br><span class="line">  <span class="symbol">encoding:</span> unicode</span><br><span class="line">  <span class="symbol">pool:</span> &lt;%= ENV.fetch(<span class="string">"RAILS_MAX_THREADS"</span>) &#123; <span class="number">5</span> &#125; %&gt;</span><br><span class="line">  <span class="symbol">timeout:</span> <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">development:</span></span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">  <span class="symbol">database:</span> test18_development</span><br><span class="line"></span><br><span class="line"><span class="symbol">test:</span></span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">  <span class="symbol">database:</span> test18_test</span><br><span class="line"></span><br><span class="line"><span class="symbol">production:</span></span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">  <span class="symbol">database:</span> test18_production</span><br></pre></td></tr></table></figure>
+
+<p>設定完成後</p>
+<p>安裝travis-lint</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install travis-lint</span><br></pre></td></tr></table></figure>
+
+<p>執行travis lint</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">travis lint</span><br><span class="line">Hooray, .travis.yml looks valid :)  #看到這段代表成功囉</span><br></pre></td></tr></table></figure>
+
+<h2>查看測試結果</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis open</span><br></pre></td></tr></table></figure>
+
+<p></p>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/27/rails_server/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
