@@ -15,7 +15,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="K7">
+      <meta property="og:title" content="Rails server 打不開">
   
   <!--Open Graph Description-->
   
@@ -23,7 +23,7 @@
   <meta property="og:site_name" content="K7">
   <!--Type page-->
   
-      <meta property="og:type" content="website">
+      <meta property="og:type" content="article">
   
   <!--Page Cover-->
   
@@ -32,7 +32,7 @@
 
   <!-- Title -->
   
-  <title>前後端開發 - K7</title>
+  <title>Rails server 打不開 - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -104,131 +104,105 @@
 
 
   <!-- Main Content -->
-  
-
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#前後端開發</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
-        
-        
-          <h2 class="year">2019</h2>
-          <ul class="list">
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Rails server 打不開
             
-  <li>
-    <span class="date">
-      2019-10-27
-    </span>
-    <a href="/2019/10/27/rails_server/" class="title">
-      Rails server 打不開
-    </a>
-  </li>
+          </h1>
+          <p class="posted-on">
+          2019-10-27
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/前後端開發/" rel="tag">
+                  前後端開發
+                </a>
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1>明明關閉了Rails server 為什麼會打不開</h1>
 
-  <li>
-    <span class="date">
-      2019-10-25
-    </span>
-    <a href="/2019/10/25/feature/" class="title">
-      feature 測試
-    </a>
-  </li>
+<p>
+明明 Server 已經關閉了，但重新輸入rails server 出現錯誤訊息：Server已經打開了
+過去常遇到此問題，我都是直接重開機。後來仔細查詳解，發現可以這樣解決
+</p>
 
-  <li>
-    <span class="date">
-      2019-10-23
-    </span>
-    <a href="/2019/10/23/heroku/" class="title">
-      heroku 更改table 出現錯誤訊息
-    </a>
-  </li>
+<div>
+發生情況 我的程式碼 不小心寫成無限迴圈 當我用 Ctrl+Z 關掉後 再跑server 會出現已經啟動的訊息
 
-  <li>
-    <span class="date">
-      2019-10-22
-    </span>
-    <a href="/2019/10/22/task01/" class="title">
-      spec 測試
-    </a>
-  </li>
+<p>當我輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails s</span><br></pre></td></tr></table></figure>
 
-  <li>
-    <span class="date">
-      2019-10-17
-    </span>
-    <a href="/2019/10/17/giphy/" class="title">
-      即時通訊傳送 giphy 貼圖
-    </a>
-  </li>
+<p>出現 server 已經開啟的訊息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A server is already running. Check /Users/kaichi/Desktop/github/project/tmp/pids/server.pid.</span><br></pre></td></tr></table></figure>
 
-  <li>
-    <span class="date">
-      2019-10-12
-    </span>
-    <a href="/2019/10/12/gitflow/" class="title">
-      Git Flow 是什麼？
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2019-10-12
-    </span>
-    <a href="/2019/10/12/it28/" class="title">
-      使用 render/jbuilder 輸出 JSON 格式
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2019-10-11
-    </span>
-    <a href="/2019/10/11/it27/" class="title">
-      PORO
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2019-10-10
-    </span>
-    <a href="/2019/10/10/it26/" class="title">
-      Rails Validators/ 回呼 Callback
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2019-10-09
-    </span>
-    <a href="/2019/10/09/it25/" class="title">
-      資料庫(SQL)建立表格 欄位介紹
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
-  
-<div class="container" >
-  <ul class="pager">
-    
-    
-      <li class="next">
-        <a href="/tags/前後端開發/page/2/">
-          <span class="meta-arraw meta-arraw-left"> </span>上一頁
-        </a>
-      </li>
-    
-  </ul>
 </div>
 
+<h2>先查出使用的port有什麼應用程式執行</h2>
+<div>
+首先要先知道你的Rails Server上一次關閉前是使用哪個port上
+預設輸入rails s皆為設定port為3000。
+例如：localhost:3000
 
+<p>在Iterm/commend上輸入下列指令，可以查出3000的port被哪些應用程式開啟。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i tcp:3001</span><br></pre></td></tr></table></figure>
+
+<img src="/images/rails_server/server1.png">
+
+<p>上圖中可以明顯看到佔用電腦3000的port有ruby<br>而ruby對應的PID是3862</p>
+</div>
+
+<h2>殺掉Ruby對應的PID，強迫關閉</h2>
+<div>
+此刻輸入
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 3862</span><br></pre></td></tr></table></figure>
+
+<p>就可以成功將佔用port:3000的Rails Server關閉<br>重新在command上輸入rails s 即可順利開啟localhost:3000囉</p>
+</div>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/25/feature/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
 </div>
 
 
