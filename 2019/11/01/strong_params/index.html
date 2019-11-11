@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Rails strong parameters">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>Rails strong parameters - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Rails strong parameters
+            
+          </h1>
+          <p class="posted-on">
+          2019-11-01
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <h1>Rails 中的 strong parameters</h1>
+
+<p>
+在講述 strong parameters 前 先說明一下 params
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span></span></span><br><span class="line">  @task = Task.find_by(<span class="symbol">id:</span> params[<span class="symbol">:id</span>])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+</p><p>以最近實作 todolist 來說明<br>當你想要在頁面上顯示單一任務的資料 你的 controller 應該會出現類似的程式碼，但為什麼是params[:id]而不單純就是id或:id呢？</p>
+<p>先解釋一下http request：當使用者點擊連結的時候，會把一個http request送回伺服器，讓伺服器根據需求來將內容傳回瀏覽器。最簡單的例子就是我們輸入google.com時，傳送了一個http request給google的伺服器，伺服器會將首頁內容回傳到瀏覽器上並顯示。</p>
+<p>在Rails當中，http request會經過ActionController這個內建的機制來消化，並將可用的變數轉換為params這個變數，交由controller處理。<br>params 會以 hash 的方式呈現</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;<span class="symbol">:task</span> =&gt; <span class="string">"我是任務一"</span>, <span class="symbol">:deadline</span> =&gt; <span class="string">"201911111100"</span>, <span class="symbol">:content</span> =&gt; <span class="string">"執行任務一"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此我們在controller當中使用params時，就是在讀取瀏覽器回傳的http request。</p>
+<p>不過要注意，params不等於http request本身，因為request本身的資訊量很多，Rails並不會全部包到params裡面，因此如果有使用開發者工具來觀看從前端傳送的http request，會發現跟我們在後端可以使用的params並不相同。</p>
+<p>我們在controller當中撰寫params[:id]時，所指的其實是從前端回傳的:id。</p>
+<h1 id="params-在-Strong-Parameters當中的意義"><a href="#params-在-Strong-Parameters當中的意義" class="headerlink" title="params 在 Strong Parameters當中的意義"></a>params 在 Strong Parameters當中的意義</h1><p>在 Rails 中有strong parameters的機制，必須是我們設定可以在這個action當中進行設定的參數，才可以傳入。<br>為了將前端傳回的變數儲存到model當中，我們會在controller撰寫一個private method：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">task_params</span></span></span><br><span class="line">    params.<span class="keyword">require</span>(<span class="symbol">:task</span>).permit(<span class="symbol">:task</span>, <span class="symbol">:content</span>, <span class="symbol">:deadline</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>我們要先定義一個method來回傳允許通過的params，其中分成兩個部分：</p>
+<p>require會把:post這個model相關的參數給抓出來，如果沒有回傳:post相關參數，就會產生錯誤訊息。</p>
+<p>permit設定有哪些參數可以傳入，如果沒有寫參數，就算你從http request當中傳入，也會回傳nil。</p>
+<p>例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;<span class="symbol">:task</span> =&gt; <span class="string">"我是任務一"</span>, <span class="symbol">:deadline</span> =&gt; <span class="string">"201911111100"</span>, <span class="symbol">:content</span> =&gt; <span class="string">"執行任務一"</span>&#125;</span><br><span class="line"><span class="comment">#以上方例子說明</span></span><br><span class="line">task_params = params.<span class="keyword">require</span>(<span class="symbol">:task</span>).permit(<span class="symbol">:task</span>, <span class="symbol">:content</span>, <span class="symbol">:deadline</span>)</span><br><span class="line">task_params[<span class="symbol">:task</span>]</span><br><span class="line">=&gt; <span class="string">"我是任務一"</span> </span><br><span class="line"></span><br><span class="line">task_params[<span class="symbol">:user_id</span>]</span><br><span class="line">=&gt; nil <span class="comment">#因為 :task 沒有 user_id 欄位 所以會回傳 nil</span></span><br></pre></td></tr></table></figure>
+
+<p></p>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2019/10/30/front_end/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
