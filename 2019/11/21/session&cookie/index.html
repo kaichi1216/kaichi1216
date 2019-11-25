@@ -134,7 +134,23 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          
+          <p>以登入來說，每次登入都必須要輸入帳密，來完成網站上身分驗證的這件事情，起因當然是因為HTTP的無狀態(stateless)通訊協議造成的，而Cookie就是用來繞開HTTP的無狀態性的「額外手段」之一，讓伺服器可以設定或讀取Cookies中所包含資訊，藉此來維護我們在使用服務時，可以在背景完成向伺服器發送請求，接著伺服器就匯回傳包含登入憑據（使用者名稱加密碼的某種加密形式）的Cookie文檔，到使用者的硬碟(或記憶體上)，在之後登入時，只要Cookie尚未到期，瀏覽器會傳送該Cookie給伺服器作驗證憑據，來減少重複登入的輸入行為。</p>
+<p>再解釋 session 跟 cookie 前 先介紹一下 什麼是 HTTP 本身是無狀態(Stateless)的協議<br>無論是客戶端還是服務器端，每一次的請求都是獨立性質，而且沒有必要紀錄彼此過去的互動行為，自然而然他沒辦法記憶你每次請求的內容</p>
+<p>以我的理解來解釋 cookie 跟 session</p>
+<p>session 就像 今天我跟你對話 我們之間的對話就可以稱作一個 session<br>cokkie 例如 今天我去麥當勞 點了一個麥脆Ｇ餐，點完我要去上廁所 那店員做好餐點後怎麼知道餐點是誰的呢 在點完餐後 他會給你發票跟點單明細 這個明細 就是 cookie 只要你拿明細去櫃檯 店員就知道你點的餐是什麼</p>
+<p>那實際情況是怎麼運用這兩個的呢？</p>
+<p>當客戶端的請求創建一個Session的時候，伺服器首先檢查這個客戶端的請求裡是否有包含了Session標識， Session id，如果已包含一個Session id，就表示他已經在伺服器端有記錄了，服務器就按照Session id，把這個Session找出來使用。但如果客戶端請求不包含Session id，，則表示他是新臉孔，那伺服器端就為此客戶端創建一個Session，並生成一個Session id，並在本次響應中返回給客戶端保存。</p>
+<p>當使用者造訪我們的網站時，我們由伺服器產生 session id ，並傳送存有這個 session id 的 cookie 給瀏覽器儲存，之後使用者造訪我們網站時，只需要比對 cookies 上的 session id 和 session 裡的 session id 就可以知道使用者身份，大部份的網站也是運用此原理實作儲存 User 登入狀態的機制。</p>
+<h1 id="Rails-session"><a href="#Rails-session" class="headerlink" title="Rails session"></a>Rails session</h1><p>在 Rails 中只要使用session[:session_name] 的 instance method 就可以在 controller 拿取 Session 的資料，例如登入功能：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">find_user</span></span></span><br><span class="line">    @user = User.find_by(<span class="symbol">id:</span> session[<span class="symbol">:user_id</span>])</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以做資料的儲存 跟刪除</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApplicationController</span> &lt; ActionController::Base</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(user)</span></span></span><br><span class="line">    session[<span class="symbol">:user_id</span>] = user.id</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">logout</span></span></span><br><span class="line">    session.delete(<span class="symbol">:user_id</span>)</span><br><span class="line">    @current_user = <span class="literal">nil</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Authenticity-Token"><a href="#Authenticity-Token" class="headerlink" title="Authenticity Token"></a>Authenticity Token</h1><p>所謂的 authenticity_token 就是一串隨機生成的 string ，在我們建立 Rails 的表單時， Rails 將會隨機生成一個 authenticity_token 存在 session 中，並且在表單的 hidden field 中也加入一樣的 authenticity_token ，當我們送出表單（post request）時， rails 會驗證表單的 authenticity_token 和 session 中的 authenticity_token 是否一樣，一樣才可以成功送出。</p>
+<p>這樣做的好處是可以避免所謂的跨站請求偽造 (Cross-site Request Forgery) ，又稱 CSRF。 CSRF 攻擊的原理是偽造一個 form 送 post 給伺服器，所以很有可能發生的情況是你在Ａ網站有登入使用者，但是在Ｂ網站點了帶有 CSRF code的連結，內容是要重新設定Ａ網站的使用者密碼為 12345678，此時Ａ網站以為是你自己送出的請求，那麼你的密碼就被換掉了。</p>
+<p>而 Rails 加上了 authenticity_token 這樣的機制就是為了阻擋 CSRF，因為Ｂ網站不會知道你的 authenticity_token 是什麼，送出的 post request 就會被擋下來。在 CSRF 中預設會檢查 POST, PUT, DELETE requests 的 authenticity_token。</p>
+
         </div>
       </article>
     </div>
