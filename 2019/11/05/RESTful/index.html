@@ -15,7 +15,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="has_many:through">
+      <meta property="og:title" content="什麼是 RESTful？">
   
   <!--Open Graph Description-->
   
@@ -32,7 +32,7 @@
 
   <!-- Title -->
   
-  <title>has_many:through - K7</title>
+  <title>什麼是 RESTful？ - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -112,18 +112,14 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            has_many:through
+            什麼是 RESTful？
             
           </h1>
           <p class="posted-on">
-          2019-11-11
+          2019-11-05
           </p>
           <div class="tags-links">
             
-              
-                <a href="/tags/前後端開發/" rel="tag">
-                  前後端開發
-                </a>
               
                 <a href="/tags/Ruby 0n Rails/" rel="tag">
                   Ruby 0n Rails
@@ -138,13 +134,26 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <h1 id="has-many-through"><a href="#has-many-through" class="headerlink" title="has_many :through"></a>has_many :through</h1><p>has_many :through 用在多對多關聯資料庫</p>
-<p>以 醫院 舉例 一個醫生 可以有很多病人，一個病人可能全身都有病 所以他可以掛很多不同科的醫生<br>醫生跟病人都都各自是一個 model ，建立多對多的關係時，這時我們就會有第三個 model 去記錄他們的關係 第三個 model 先叫做 醫院 負責記錄每個病人的看診醫生跟醫生看診的病人的紀錄</p>
-<h2 id="models-patient-rb"><a href="#models-patient-rb" class="headerlink" title="models/patient.rb"></a>models/patient.rb</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Patient</span> &lt; ActiveRecord::Base</span></span><br><span class="line">    <span class="comment"># 先告訴model我們在醫院會有很多筆資料</span></span><br><span class="line">    has_many <span class="symbol">:hospital_associations</span></span><br><span class="line">  <span class="comment"># 這些資料是要拿來判斷這個病人有多少看診醫生</span></span><br><span class="line">    has_many <span class="symbol">:doctors</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:hospital_associations</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+          <p>根據 <a href="https://ihower.tw/rails/restful.html" target="_blank" rel="noopener">Rails實戰聖經</a> </p>
+<p>什麼是REST呢？表象化狀態轉變Representational State Transfer，簡稱REST<br>REST有主要有兩個核心精神：</p>
+<ol>
+<li>使用Resource來當做識別的資源，也就是使用一個URL網址來代表一個Resource </li>
+<li>同一個Resource則可以有不同的Representations格式變化。而Representation則是用了respond_to方法來實作。</li>
+</ol>
+<p>從字面上解讀起來可能很混亂，所以直接以程式碼來了解!!</p>
+<p>/tasks/create<br>/tasks/show/1<br>/tasks/update/1<br>/tasks/destroy/1<br>會得到<br>POST /tasks對應到Controller中的create action<br>GET /tasks/1對應到Controller中的show action<br>PATCH /tasks/1對應到Controller中的update action<br>DELETE /tasks/1對應到Controller中的destroy action</p>
+<p>什麼是HTTP method？在HTTP通訊協定中制定了九種動詞(Verbs)來跟伺服器溝通，分別是HEAD、GET、POST、PUT、PATCH、DELETE、TRACE、OPTIONS、CONNECT。其中最常見的就是GET和POST：GET用來讀取資料，這個動作不應該造成任何資料變更。而POST用於送出資料，這個動作不會被快取。而因為HTML只能送出GET或透過表單送出POST，Rails為了突破這個限制，在POST加上一個隱藏參數_method=PATCH或_method=DELETE就可以當做PATCH和DELETE請求了。</p>
+<p>HTTP GET和其他動詞最大的差別在於它被認為是一個純讀取、不會修改任何資料的操作，不像POST、PATCH、DELETE會修改伺服器上的資料。我們一般用瀏覽器GET網頁，可以回上一頁或重新整理，但是POST網頁要重新整理時，瀏覽器會提示你是否要在執行一次，就是這個道理。</p>
+<p>Rails用這套慣例來大大簡化了路由設定。那程式該怎麼寫呢？我們在config/routes.rb加入以下一行程式：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:tasks</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="models-doctor-rb"><a href="#models-doctor-rb" class="headerlink" title="models/doctor.rb"></a>models/doctor.rb</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Doctor</span> &lt; ActiveRecord::Base</span></span><br><span class="line">    <span class="comment"># 先告訴model我們在醫院會有很多筆資料</span></span><br><span class="line">    has_many <span class="symbol">:hospital_associations</span></span><br><span class="line">  <span class="comment"># 這些資料是要拿來判斷這個醫生有多少看診病人</span></span><br><span class="line">    has_many <span class="symbol">:patients</span>, <span class="symbol">:through</span> =&gt; <span class="symbol">:hospital_associations</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>在終端機輸入 rails routes也會列出目前設定的路由規則有哪些：<br><img src="/images/restful/restful.png"></p>
+<p>這七個Action方法的名字，Rails是定好的，無法修改。這一套慣例建議你背起來，你可以這樣記憶：</p>
+<p>show、new、edit、update、destroy是單數，對單一元素操作<br>index、create是複數，對群集操作<br>event_path(@event)需要參數，根據HTTP動詞決定show、update、destroy<br>events_path毋需參數，根據HTTP動詞決定index、create</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;tbody&gt;</span><br><span class="line">  &lt;% @tasks.each <span class="keyword">do</span> <span class="params">|task|</span> %&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">    &lt;td scope=<span class="string">"row"</span>&gt;&lt;%= task.task %&gt;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">    &lt;td scope="row"&gt;&lt;%= task.user.username %&gt;&lt;/td</span>&gt;</span><br><span class="line">    &lt;td&gt;</span><br><span class="line">      &lt;%= link_to <span class="string">"編輯"</span>, edit_task_path(task) %&gt;</span><br><span class="line">      &lt;%= link_to <span class="string">"查看"</span>, task_path(task) %&gt;</span><br><span class="line">      &lt;%= link_to <span class="string">"刪除"</span>, task_path(task), <span class="symbol">method:</span> <span class="string">"delete"</span>, <span class="symbol">data:</span>&#123; <span class="symbol">confirm:</span> t(<span class="string">'views.tasks.delete_msg'</span>)&#125; %&gt;</span><br><span class="line">    &lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/tr</span>&gt;</span><br><span class="line">  &lt;% <span class="keyword">end</span> %&gt;</span><br><span class="line">&lt;<span class="regexp">/tbody&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="models-sports-associations-rb"><a href="#models-sports-associations-rb" class="headerlink" title="models/sports_associations.rb"></a>models/sports_associations.rb</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HospitalAssociations</span> &lt; ActiveRecord::Base</span></span><br><span class="line">    <span class="comment">#醫院要對病人和醫生負責，所以醫院belongs_to病人和醫生</span></span><br><span class="line">    belongs_to <span class="symbol">:doctor</span></span><br><span class="line">    belongs_to <span class="symbol">:patient</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>刪除的地方，多一個參數:method =&gt; :delete。非GET的操作，額外加上的:confirm參數則會讓Rails的JavaScript跳出確認視窗。</p>
+
         </div>
       </article>
     </div>
@@ -163,12 +172,12 @@
     <div class="nav-links">
       
         <div class="nav-previous">
-          <a href="/2019/11/13/concern/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
+          <a href="/2019/11/11/has_many/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一頁</a>
         </div>
       
       
         <div class="nav-next">
-          <a href="/2019/11/05/RESTful/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/11/01/strong_params/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>
