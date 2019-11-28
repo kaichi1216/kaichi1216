@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <!--Author-->
+  
+  <meta name="author" content="Kai Chi">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="資料表操作">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="K7">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>資料表操作 - K7</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            資料表操作
+            
+          </h1>
+          <p class="posted-on">
+          2019-11-24
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/Ruby 0n Rails/" rel="tag">
+                  Ruby 0n Rails
+                </a>
+              
+                <a href="/tags/菜鳥日誌/" rel="tag">
+                  菜鳥日誌
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>整理一下 ActiveRecord 資料表操作 以方便自己複習</p>
+<h2 id="first-amp-last"><a href="#first-amp-last" class="headerlink" title="first &amp; last"></a>first &amp; last</h2><p>取出資料的第一筆 最後一筆</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user = User.first</span><br><span class="line">User = User.last</span><br></pre></td></tr></table></figure>
+
+<h2 id="all"><a href="#all" class="headerlink" title="all"></a>all</h2><p>取出全部的資料，剛開始學習的時候，在index頁面 最常用的就是 .all ，撈出全部的資料，但這樣做會造成 query n+1 的問題，所以在上線環境下 最好不要這樣使用</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users = User.all</span><br></pre></td></tr></table></figure>
+
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>知道資料的主key 可以使用find 查詢</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user1 = User.find(<span class="number">1</span>) <span class="comment">#找 id 是1的使用者</span></span><br></pre></td></tr></table></figure>
+
+<p>find 也可以接受陣列參數</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = User.find([<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="keyword">or</span></span><br><span class="line">arr = User.find(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="find-by"><a href="#find-by" class="headerlink" title="find_by"></a>find_by</h2><p>可以用非常直接的條件查詢欄位</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user = User.find_by(<span class="symbol">name:</span> <span class="string">'孫悟空'</span>)</span><br><span class="line">user = User.find_by_name_and_age(<span class="string">"小丑巴奇"</span>, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="reload"><a href="#reload" class="headerlink" title="reload"></a>reload</h2><p>這個方法可以將物件從資料庫裡重新載入一次</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user1 = User.first</span><br><span class="line">user1.name = <span class="string">'小肉球'</span></span><br><span class="line">user1.reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="pluck"><a href="#pluck" class="headerlink" title="pluck"></a>pluck</h2><p>快速撈出指定欄位的快速撈出指定欄位的資料</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User.pluck(<span class="symbol">:name</span>)</span><br><span class="line">=&gt; [<span class="string">'小肉球'</span>, <span class="string">'小丑巴奇'</span>, <span class="string">'孫悟空'</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="find-by-sql"><a href="#find-by-sql" class="headerlink" title="find_by_sql"></a>find_by_sql</h2><p>如果需要手動撰寫 SQL，可以使用find_by_sql和count_by_sql，例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users = User.find_by_sql(<span class="string">"select * from users"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="where"><a href="#where" class="headerlink" title="where"></a>where</h2><p>where 可以非常彈性的組合出 SQL 查詢，例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user1 = User.where(<span class="symbol">name:</span> <span class="string">'達爾'</span>, <span class="symbol">nickname:</span> <span class="string">'賽亞人王子'</span>)</span><br><span class="line">user1 = User.where(<span class="string">"name = ? or nickname = ?"</span>, <span class="string">"達爾"</span>, <span class="string">"賽亞人王子"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其中參數有兩種寫法，一種是 Hash，另一種是用?替換組合出SQL。前者的寫法雖然比較簡潔，但是就沒辦法寫出 or 的查詢。</p>
+<h2 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h2><p>limit 可以限制筆數</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">users = User.limit(<span class="number">5</span>).all</span><br><span class="line">users.size <span class="comment"># 5</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="order"><a href="#order" class="headerlink" title="order"></a>order</h2><p>可以設定排序條件</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User.order(<span class="string">"birthday"</span>)</span><br><span class="line">User.order(<span class="string">"birthday DESC"</span>)</span><br><span class="line">User.order(<span class="string">"birthday DESC, name ASC"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果要消去order條件，可以用reorder：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User.order(<span class="string">"birthday"</span>).reorder(<span class="string">"name"</span>) <span class="comment"># 改用 name 排序</span></span><br><span class="line">User.order(<span class="string">"birthday"</span>).reorder(<span class="literal">nil</span>) <span class="comment"># 取消所有排序</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h2><p>offset 可以設定忽略前幾筆不取出，通常用於資料分頁：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c = User.limit(<span class="number">2</span>)</span><br><span class="line">c.first.id <span class="comment"># 1</span></span><br><span class="line">c = User.limit(<span class="number">2</span>).offset(<span class="number">3</span>)</span><br><span class="line">c.first.id <span class="comment"># 4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p>預設的 SQL 查詢會取出資料的所有欄位，有時候你可能不需要所有資料，為了效能我們可以只取出其中特定欄位：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User.select(<span class="string">"id, name"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="group-amp-having"><a href="#group-amp-having" class="headerlink" title="group &amp; having"></a>group &amp; having</h2><p>group運用了資料庫的group_by功能，讓我們可以將SQL計算後(例如count)的結果依照某一個欄位分組後回傳，例如說今天我有一批訂單，裡面有分店的銷售金額，我希望能這些金額全部加總起來變成的各分店銷售總金額，這時候我就可以這麼做：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order.select(<span class="string">"store_name, sum(sales)"</span>).group(<span class="string">"store"</span>)</span><br><span class="line"><span class="comment">#產生的 sql 語法</span></span><br><span class="line">SELECT store_name, sum(sales) FROM orders GROUP BY store_name</span><br></pre></td></tr></table></figure>
+
+<p>having則是讓group可以再增加條件，例如我們想為上面的查詢增加條件是找出業績銷售超過10000的分店，那麼我可以這麼下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Order.select(<span class="string">"store_name, sum(sales)"</span>).group(<span class="string">"store"</span>).having(<span class="string">"sum(sales) &gt; ?"</span>, <span class="number">10000</span>)</span><br><span class="line"><span class="comment">#產生的 sql 語法</span></span><br><span class="line">SELECT store_name, sum(sales) FROM orders GROUP BY store_name HAVING sum(sales) &gt; <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="first-or-initialize-和-first-or-create"><a href="#first-or-initialize-和-first-or-create" class="headerlink" title="first_or_initialize 和 first_or_create"></a>first_or_initialize 和 first_or_create</h2><p>這個方法可以很方便的先查詢有沒有符合條件的資料，沒有的話就初始化，例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = User.where( <span class="symbol">:name</span> =&gt; <span class="string">"Ruby"</span> ).first <span class="params">||</span> User.new( <span class="symbol">:name</span> =&gt; <span class="string">"Ruby"</span> )</span><br></pre></td></tr></table></figure>
+
+<p>可以改寫成</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = User.where(<span class="symbol">:name</span> =&gt; <span class="string">"Ruby"</span>).first_or_initialize</span><br></pre></td></tr></table></figure>
+
+<p>如果要直接存進資料庫可以改成 first_or_create</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = User.where(<span class="symbol">:name</span> =&gt; <span class="string">"Ruby"</span>).first_or_create</span><br></pre></td></tr></table></figure>
+
+<p>或是Validate失敗丟例外的版本：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = User.where(<span class="symbol">:name</span> =&gt; <span class="string">"Ruby"</span>).first_or_create!</span><br></pre></td></tr></table></figure>
+
+<h2 id="虛擬屬性-Virtual-Attribute"><a href="#虛擬屬性-Virtual-Attribute" class="headerlink" title="虛擬屬性(Virtual Attribute)"></a>虛擬屬性(Virtual Attribute)</h2><p>有時候表單裡操作的屬性資料，不一定和資料庫的欄位完全對應。例如資料表分成first_name和last_name兩個欄位好了，但是表單輸入和顯示的時候，只需要一個屬性叫做full_name，這時候你就可以在model裡面定義這樣的方法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">full_name</span></span></span><br><span class="line">    <span class="string">"<span class="subst">#&#123;<span class="keyword">self</span>.first_name&#125;</span> <span class="subst">#&#123;<span class="keyword">self</span>.last_name&#125;</span>"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">full_name=</span><span class="params">(value)</span></span></span><br><span class="line">    <span class="keyword">self</span>.first_name, <span class="keyword">self</span>.last_name = value.to_s.split(<span class="string">" "</span>, <span class="number">2</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2019/11/21/session&cookie/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">關於本站</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">與我聯系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+            
+              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+            
+              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站內搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149600171-1');
+</script>
+
+<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+
+<footer class="site-info">
+  <p>
+    <span>K7 &copy; 2019</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
