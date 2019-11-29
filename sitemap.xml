@@ -2,324 +2,324 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://k7.nz/2019/11/24/ActiveRecord_Query_Interface/</loc>
-    
-    <lastmod>2019-11-27T14:34:43.695Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/18/https/</loc>
-    
-    <lastmod>2019-11-27T08:32:30.751Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/06/collect/</loc>
-    
-    <lastmod>2019-11-26T06:18:06.750Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/21/session&cookie/</loc>
-    
-    <lastmod>2019-11-25T07:32:48.995Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
-    
-    <lastmod>2019-11-25T06:32:01.605Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/11/has_many/</loc>
-    
-    <lastmod>2019-11-22T06:23:59.544Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/20/super/</loc>
-    
-    <lastmod>2019-11-22T06:05:46.570Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/19/safe_navigation/</loc>
-    
-    <lastmod>2019-11-21T11:09:55.199Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/01/strong_params/</loc>
-    
-    <lastmod>2019-11-20T06:06:32.177Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/16/select2/</loc>
-    
-    <lastmod>2019-11-19T09:22:40.001Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/13/concern/</loc>
-    
-    <lastmod>2019-11-19T05:43:35.703Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/29/n+1/</loc>
-    
-    <lastmod>2019-11-11T18:56:53.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/04/model/</loc>
-    
-    <lastmod>2019-11-11T10:04:12.488Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/03/it19/</loc>
-    
-    <lastmod>2019-11-11T10:00:13.322Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/28/proc_lambda/</loc>
-    
-    <lastmod>2019-11-09T18:24:30.800Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/18/blog/</loc>
-    
-    <lastmod>2019-11-09T08:51:28.788Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/30/front_end/</loc>
-    
-    <lastmod>2019-11-06T06:21:32.639Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/27/rails_server/</loc>
-    
-    <lastmod>2019-11-04T14:22:09.545Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://k7.nz/2019/10/29/travisCI/</loc>
     
-    <lastmod>2019-11-01T08:28:24.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/22/task01/</loc>
-    
-    <lastmod>2019-10-31T09:20:32.488Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/23/heroku/</loc>
-    
-    <lastmod>2019-10-31T09:20:25.102Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/25/feature/</loc>
-    
-    <lastmod>2019-10-31T09:20:13.429Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/17/giphy/</loc>
-    
-    <lastmod>2019-10-21T07:42:27.701Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/18/it04/</loc>
-    
-    <lastmod>2019-10-21T07:10:11.061Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/24/it10/</loc>
-    
-    <lastmod>2019-10-21T07:07:49.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/25/it11/</loc>
-    
-    <lastmod>2019-10-21T07:04:58.389Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/26/it12/</loc>
-    
-    <lastmod>2019-10-21T07:00:26.272Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/27/it13/</loc>
-    
-    <lastmod>2019-10-21T06:57:00.473Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/28/it14/</loc>
-    
-    <lastmod>2019-10-21T06:52:12.461Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/29/it15/</loc>
-    
-    <lastmod>2019-10-21T06:51:16.297Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/30/it16/</loc>
-    
-    <lastmod>2019-10-21T06:44:19.172Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/02/it18/</loc>
-    
-    <lastmod>2019-10-21T06:42:22.163Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/04/it20/</loc>
-    
-    <lastmod>2019-10-21T06:35:15.194Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/08/it24/</loc>
-    
-    <lastmod>2019-10-21T06:29:44.150Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/09/it25/</loc>
-    
-    <lastmod>2019-10-21T06:26:06.639Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/10/it26/</loc>
-    
-    <lastmod>2019-10-21T06:20:16.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/11/it27/</loc>
-    
-    <lastmod>2019-10-21T06:16:03.912Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/12/gitflow/</loc>
-    
-    <lastmod>2019-10-21T06:14:02.297Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/12/it28/</loc>
-    
-    <lastmod>2019-10-21T06:12:30.561Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/06/httprequest/</loc>
-    
-    <lastmod>2019-10-21T05:40:20.053Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/05/db/</loc>
-    
-    <lastmod>2019-10-21T05:28:30.161Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/04/form/</loc>
-    
-    <lastmod>2019-10-21T05:21:11.635Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/03/devise/</loc>
-    
-    <lastmod>2019-10-21T05:14:50.117Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/19/git/</loc>
-    
-    <lastmod>2019-10-21T04:37:49.656Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/19/ruby/</loc>
-    
-    <lastmod>2019-09-19T09:42:11.963Z</lastmod>
+    <lastmod>2019-11-29T05:57:35.393Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://k7.nz/2019/09/17/test1/</loc>
     
-    <lastmod>2019-09-19T06:00:26.557Z</lastmod>
+    <lastmod>2019-11-29T05:57:32.013Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/22/task01/</loc>
+    
+    <lastmod>2019-11-29T05:57:26.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/20/super/</loc>
+    
+    <lastmod>2019-11-29T05:57:22.636Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/01/strong_params/</loc>
+    
+    <lastmod>2019-11-29T05:57:18.341Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/21/session&cookie/</loc>
+    
+    <lastmod>2019-11-29T05:57:14.226Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/16/select2/</loc>
+    
+    <lastmod>2019-11-29T05:57:09.389Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/19/safe_navigation/</loc>
+    
+    <lastmod>2019-11-29T05:57:03.873Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/19/ruby/</loc>
+    
+    <lastmod>2019-11-29T05:56:59.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
+    
+    <lastmod>2019-11-29T05:56:54.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/27/rails_server/</loc>
+    
+    <lastmod>2019-11-29T05:56:47.579Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/28/proc_lambda/</loc>
+    
+    <lastmod>2019-11-29T05:56:43.348Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/29/n+1/</loc>
+    
+    <lastmod>2019-11-29T05:56:39.662Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/04/model/</loc>
+    
+    <lastmod>2019-11-29T05:56:34.884Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/12/it28/</loc>
+    
+    <lastmod>2019-11-29T05:56:30.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/11/it27/</loc>
+    
+    <lastmod>2019-11-29T05:56:27.420Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/10/it26/</loc>
+    
+    <lastmod>2019-11-29T05:56:23.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/09/it25/</loc>
+    
+    <lastmod>2019-11-29T05:56:19.300Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/08/it24/</loc>
+    
+    <lastmod>2019-11-29T05:56:13.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/04/it20/</loc>
+    
+    <lastmod>2019-11-29T05:56:09.285Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/03/it19/</loc>
+    
+    <lastmod>2019-11-29T05:56:05.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/02/it18/</loc>
+    
+    <lastmod>2019-11-29T05:56:00.846Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/30/it16/</loc>
+    
+    <lastmod>2019-11-29T05:55:56.709Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/29/it15/</loc>
+    
+    <lastmod>2019-11-29T05:55:52.486Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/28/it14/</loc>
+    
+    <lastmod>2019-11-29T05:55:48.574Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/27/it13/</loc>
+    
+    <lastmod>2019-11-29T05:55:44.173Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/26/it12/</loc>
+    
+    <lastmod>2019-11-29T05:55:38.368Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/25/it11/</loc>
+    
+    <lastmod>2019-11-29T05:55:35.273Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/24/it10/</loc>
+    
+    <lastmod>2019-11-29T05:55:31.192Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/18/it04/</loc>
+    
+    <lastmod>2019-11-29T05:55:27.697Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/18/https/</loc>
+    
+    <lastmod>2019-11-29T05:55:23.738Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/06/httprequest/</loc>
+    
+    <lastmod>2019-11-29T05:55:17.755Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/23/heroku/</loc>
+    
+    <lastmod>2019-11-29T05:55:13.302Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/11/has_many/</loc>
+    
+    <lastmod>2019-11-29T05:55:07.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/12/gitflow/</loc>
+    
+    <lastmod>2019-11-29T05:55:03.128Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/19/git/</loc>
+    
+    <lastmod>2019-11-29T05:54:58.778Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/17/giphy/</loc>
+    
+    <lastmod>2019-11-29T05:54:55.259Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/30/front_end/</loc>
+    
+    <lastmod>2019-11-29T05:54:51.100Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/04/form/</loc>
+    
+    <lastmod>2019-11-29T05:54:47.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/25/feature/</loc>
+    
+    <lastmod>2019-11-29T05:54:44.322Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/05/db/</loc>
+    
+    <lastmod>2019-11-29T05:54:38.107Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/03/devise/</loc>
+    
+    <lastmod>2019-11-29T05:54:33.372Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/24/ActiveRecord_Query_Interface/</loc>
+    
+    <lastmod>2019-11-29T05:54:28.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/06/collect/</loc>
+    
+    <lastmod>2019-11-29T05:54:24.146Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/09/18/blog/</loc>
+    
+    <lastmod>2019-11-29T05:54:22.031Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/13/concern/</loc>
+    
+    <lastmod>2019-11-29T05:54:10.848Z</lastmod>
     
   </url>
   

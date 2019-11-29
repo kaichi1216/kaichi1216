@@ -121,12 +121,12 @@
           <div class="tags-links">
             
               
-                <a href="/tags/Ruby 0n Rails/" rel="tag">
-                  Ruby 0n Rails
-                </a>
-              
                 <a href="/tags/菜鳥日誌/" rel="tag">
                   菜鳥日誌
+                </a>
+              
+                <a href="/tags/Ruby on Rails/" rel="tag">
+                  Ruby on Rails
                 </a>
               
             
@@ -136,7 +136,7 @@
         <div class="entry-content has_line_number">
           <h1>什麼是 Concerns? 什麼時候要用？</h1>
 
-<p>查了一下 <a href="https://ihower.tw/rails/activesupport.html" target="_blank" rel="noopener">Rails實戰聖經</a>裡面的用法<br>意思大概是說 當你有兩個 module A跟ㄎB，他們有相依關係，當你想要使用A的時候 必須要把兩個 module 都 include 進來，很麻煩 對 不只是工程師覺得麻煩， 我自己也很懶 所以可以使用ActiveSupport::Concern，只需要include我們想要使用的Module，其他的相依關係我們不需要去考慮他 示範如下：</p>
+<p>查了一下 <a href="https://ihower.tw/rails/activesupport.html" target="_blank" rel="noopener">Rails實戰聖經</a>裡面的用法<br>意思大概是說 當你有兩個 module A跟B，他們有相依關係，當你想要使用A的時候 必須要把兩個 module 都 include 進來，很麻煩 對 不只是工程師覺得麻煩， 我自己也很懶 所以可以使用ActiveSupport::Concern，只需要include我們想要使用的Module，其他的相依關係我們不需要去考慮他 示範如下：</p>
 <p>一般情況下</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Module A</span><br><span class="line">  <span class="keyword">self</span>.included(base)</span><br><span class="line">    <span class="keyword">include</span> B</span><br><span class="line">    <span class="comment"># 當 Module A 被 include 後便 include Module B</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">#當你今天想要使用 A 的時候 就必須也把 B  include近來</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Something</span></span></span><br><span class="line">  <span class="keyword">include</span> A, B</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
