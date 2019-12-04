@@ -175,7 +175,7 @@
 <p>#new.html.erb</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> @user.errors.any? %&gt;</span><br><span class="line">  &lt;% @user.errors.full_messages.each <span class="keyword">do</span> <span class="params">|message|</span> %&gt;</span><br><span class="line">  &lt;li&gt;&lt;%= message %&gt;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;% end %&gt;</span></span><br><span class="line"><span class="regexp">&lt;% end %&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>上面這段意思是 如果 輸入資料有錯誤 就把錯誤訊息印出來</p>
+<p>如果 輸入資料有錯誤 就把錯誤訊息印出來</p>
 <p>檢視原始碼可以看到：他會自動幫你在錯誤的input上加一個field_with_errors的div</p>
 <p>關閉錯誤區塊(field with errors)<br>如果不希望出現此區塊，可以在 config/environment.rb 中加上：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ActionView::Base.field_error_proc = Proc.new <span class="keyword">do</span> <span class="params">|html_tag, instance|</span></span><br><span class="line">  html_tag.html_safe</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
