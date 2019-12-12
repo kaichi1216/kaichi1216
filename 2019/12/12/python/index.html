@@ -15,7 +15,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="試做新電影小爬蟲">
+      <meta property="og:title" content="試做 python 爬蟲">
   
   <!--Open Graph Description-->
   
@@ -32,7 +32,7 @@
 
   <!-- Title -->
   
-  <title>試做新電影小爬蟲 - K7</title>
+  <title>試做 python 爬蟲 - K7</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -112,7 +112,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            試做新電影小爬蟲
+            試做 python 爬蟲
             
           </h1>
           <p class="posted-on">
@@ -134,7 +134,43 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          
+          <p>覺得爬蟲抓取資料，超級酷的，但一直不知道該怎麼做，恰巧看到有大大分享如何十座簡易的爬蟲，看得我非常興奮，想說自己來實做看看，中間除錯了一段時間，終於在最後完成拉！！！！</p>
+<p>首先你需要下載 <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python</a><br>因為mac os 原先就有 Python，但版本較舊，所以我需要下載比較新的版本，到官網下載安裝 可以到終端機輸入檢查是否有python版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line">Python <span class="number">2.7</span><span class="number">.10</span></span><br></pre></td></tr></table></figure>
+
+<p>因為我本身非常喜歡看電影，但常常會忘記最近有什麼新片上映，所以這次用抓取新電影來做示範</p>
+<p>打開你的編譯器，新建一個檔案 這裡我建立 start.py 檔案<br><img src="/images/python/python1.jpg"></p>
+<p>我們要抓取的是 HTML格式資料 所以要使用 beautifulsoup 這個第三方套件來做解析<br>當你下載 python 時也會一起安裝 PIP 套件管理工具 像是 ruby 的 Homebrew<br>接著在終端機輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+
+<p>接下來就可以開始實做囉<br><img src="/images/python/python2.jpg"><br>打開這個網頁 可以看到有電影圖片名稱，以此網頁網址用來抓取資料，點擊右鍵選擇檢視網頁原始碼，這就會是你待會抓取到的原始碼<br>打開你剛建立的檔案</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#start.py</span></span><br><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req  <span class="comment">#request 是內建的套件 </span></span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line">request=req.Request(url) <span class="keyword">as</span> response:</span><br><span class="line">  data=response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+
+<p>在終端機下輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 start.py</span><br></pre></td></tr></table></figure>
+
+<p>得到錯誤訊息<br><img src="/images/python/python3.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#錯誤訊息最後一行</span></span><br><span class="line">urllib.error.HTTPError: HTTP Error <span class="number">403</span>: Forbidden</span><br></pre></td></tr></table></figure>
+
+<p>最後一行顯示 連線被拒絕，之所以出现上面的錯誤,是因为如果用 urllib.request 方式打开一个URL,伺服器端只会收到一个單純該頁面訪問的請求,但是伺服器并不知道發送這個请求使用的瀏覽器,操作系统,平台等信息,而缺少这些信息的请求往往都是非正常的訪問,例如爬蟲。<br>有些網站为了防止這種非正常的訪問,會驗證请求信息中的UserAgent(它的訊息包括硬件平台、系统軟件、應用軟體和用戶個人偏好)，如果UserAgent存在異常或者是不存在,那麼這次请求將會被拒绝(如上錯誤訊息所示)</p>
+<p>所以可以嘗試在请求中加入UserAgent的信息<br>那UserAgent要去哪裡找呢 打開你的網頁 找取開發者工作 Network<br><img src="/images/python/python4.jpg"><br>右下角最後有一個 User-Agent 複製這段，修改剛剛建立的程式碼</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+
+<p>在終端機輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 start.py</span><br></pre></td></tr></table></figure>
+
+
+<p>這樣就可以看到抓取到的 原始碼資料跟網頁一樣了<br>接下來因為我只想抓取電影的標題，這時剛剛下載的套件就要派上用場</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line">root=bs4.BeautifulSoup(data, <span class="string">"html.parser"</span>) <span class="comment">#使用套件把剛剛抓到的原始碼用html去做解析</span></span><br><span class="line"><span class="comment">#找到 &lt;article&gt; 並且 class 為 filmList接著用迴圈印出他的字串(圖片如下)</span></span><br><span class="line">titles = root.find_all(<span class="string">"article"</span>, class_=<span class="string">"filmList"</span>)</span><br><span class="line"><span class="keyword">for</span> title <span class="keyword">in</span> titles:</span><br><span class="line">    print(title.a.string)</span><br></pre></td></tr></table></figure>
+
+<img src="/images/python/python5.jpg">
+
+
+
+
+
+
+
         </div>
       </article>
     </div>
