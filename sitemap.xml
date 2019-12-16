@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k7.nz/2019/10/28/proc_lambda/</loc>
+    
+    <lastmod>2019-12-16T07:53:09.947Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k7.nz/2019/12/12/python/</loc>
     
     <lastmod>2019-12-14T07:53:45.943Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>http://k7.nz/2019/10/27/rails_server/</loc>
     
     <lastmod>2019-11-29T05:56:47.579Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/28/proc_lambda/</loc>
-    
-    <lastmod>2019-11-29T05:56:43.348Z</lastmod>
     
   </url>
   

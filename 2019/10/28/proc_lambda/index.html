@@ -135,6 +135,7 @@
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
           <p>
+lambda 跟 proc幾乎一模一樣，，主要差別在於 "檢查參數"，"丟回控制權"
 在 Ruby 裡 block 不是物件，沒辦法單獨純在，也沒辦法指定變數給他，示範如下
 
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#block沒辦法單獨純在跟指定變數，都會得到錯誤訊息</span></span><br><span class="line">&#123; puts <span class="string">"大家好"</span>&#125;</span><br><span class="line">eat = &#123; puts <span class="string">"吃到飽囉"</span> &#125;</span><br></pre></td></tr></table></figure>
