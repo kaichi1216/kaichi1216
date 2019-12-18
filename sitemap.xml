@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
+    
+    <lastmod>2019-12-18T07:46:55.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/11/19/safe_navigation/</loc>
+    
+    <lastmod>2019-12-16T08:24:56.391Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k7.nz/2019/10/28/proc_lambda/</loc>
     
     <lastmod>2019-12-16T07:53:09.947Z</lastmod>
@@ -100,23 +114,9 @@
   </url>
   
   <url>
-    <loc>http://k7.nz/2019/11/19/safe_navigation/</loc>
-    
-    <lastmod>2019-11-29T05:57:03.873Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://k7.nz/2019/09/19/ruby/</loc>
     
     <lastmod>2019-11-29T05:56:59.589Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
-    
-    <lastmod>2019-11-29T05:56:54.979Z</lastmod>
     
   </url>
   

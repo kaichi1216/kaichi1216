@@ -158,7 +158,8 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aa.try!(<span class="symbol">:age</span>)</span><br><span class="line">NoMethodError (undefined method <span class="string">`age' for #&lt;User:0x00007fefdd3e5128&gt;)</span></span><br></pre></td></tr></table></figure>
 
 <p>try這個method並不存在Ruby中，而是僅能在Rails中使用。</p>
-<h1 id="amp-（safe-navigation-operator）"><a href="#amp-（safe-navigation-operator）" class="headerlink" title="&amp;.（safe navigation operator）"></a>&amp;.（safe navigation operator）</h1><p>safe navigation operator使用起來就跟try!類似，唯一不同的點就是寫法簡潔更多(簡潔到我一開始看不懂這是乾麻的…)，以及safe navigation operator是Ruby內建的method。</p>
+<h1 id="amp-（safe-navigation-operator）"><a href="#amp-（safe-navigation-operator）" class="headerlink" title="&amp;.（safe navigation operator）"></a>&amp;.（safe navigation operator）</h1><p>Rails 裡面有 try()<br>Ruby 裡面則是有 &amp;. (Version 2.3.0 之後，稱為 lonely/safe navigation operator)</p>
+<p>safe navigation operator使用起來就跟try!類似，唯一不同的點就是寫法簡潔更多(簡潔到我一開始看不懂這是乾麻的…)，以及safe navigation operator是Ruby內建的method。</p>
 
         </div>
       </article>
