@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k7.nz/2019/10/12/gitflow/</loc>
+    
+    <lastmod>2019-12-28T12:09:50.218Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k7.nz/2019/11/19/safe_navigation/</loc>
     
     <lastmod>2019-12-26T04:39:27.859Z</lastmod>
@@ -278,13 +285,6 @@
     <loc>http://k7.nz/2019/11/11/has_many/</loc>
     
     <lastmod>2019-11-29T05:55:07.355Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/12/gitflow/</loc>
-    
-    <lastmod>2019-11-29T05:55:03.128Z</lastmod>
     
   </url>
   
