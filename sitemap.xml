@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k7.nz/2019/09/18/blog/</loc>
+    
+    <lastmod>2020-01-02T07:40:12.018Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k7.nz/2019/11/24/ActiveRecord_Query_Interface/</loc>
     
     <lastmod>2019-12-31T06:06:14.163Z</lastmod>
@@ -327,13 +334,6 @@
     <loc>http://k7.nz/2019/11/06/collect/</loc>
     
     <lastmod>2019-11-29T05:54:24.146Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/09/18/blog/</loc>
-    
-    <lastmod>2019-11-29T05:54:22.031Z</lastmod>
     
   </url>
   
