@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
+    
+    <lastmod>2020-01-05T16:37:45.715Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/06/httprequest/</loc>
+    
+    <lastmod>2020-01-05T16:36:38.252Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://k7.nz/2019/10/27/rails_server/</loc>
+    
+    <lastmod>2020-01-05T16:26:39.880Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://k7.nz/2019/11/13/concern/</loc>
     
     <lastmod>2020-01-04T09:39:57.240Z</lastmod>
@@ -47,13 +68,6 @@
     <loc>http://k7.nz/2019/12/12/python/</loc>
     
     <lastmod>2019-12-19T15:59:35.831Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/11/05/RESTful/</loc>
-    
-    <lastmod>2019-12-19T15:57:13.806Z</lastmod>
     
   </url>
   
@@ -138,13 +152,6 @@
     <loc>http://k7.nz/2019/09/19/ruby/</loc>
     
     <lastmod>2019-11-29T05:56:59.589Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/27/rails_server/</loc>
-    
-    <lastmod>2019-11-29T05:56:47.579Z</lastmod>
     
   </url>
   
@@ -271,13 +278,6 @@
     <loc>http://k7.nz/2019/11/18/https/</loc>
     
     <lastmod>2019-11-29T05:55:23.738Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://k7.nz/2019/10/06/httprequest/</loc>
-    
-    <lastmod>2019-11-29T05:55:17.755Z</lastmod>
     
   </url>
   

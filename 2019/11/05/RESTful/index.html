@@ -144,7 +144,7 @@
 <p>/tasks/create<br>/tasks/show/1<br>/tasks/update/1<br>/tasks/destroy/1<br>會得到<br>POST /tasks對應到Controller中的create action<br>GET /tasks/1對應到Controller中的show action<br>PATCH /tasks/1對應到Controller中的update action<br>DELETE /tasks/1對應到Controller中的destroy action</p>
 <p>什麼是HTTP method？在HTTP通訊協定中制定了九種動詞(Verbs)來跟伺服器溝通，分別是HEAD、GET、POST、PUT、PATCH、DELETE、TRACE、OPTIONS、CONNECT。其中最常見的就是GET和POST：GET用來讀取資料，這個動作不應該造成任何資料變更。而POST用於送出資料，這個動作不會被快取。而因為HTML只能送出GET或透過表單送出POST，Rails為了突破這個限制，在POST加上一個隱藏參數_method=PATCH或_method=DELETE就可以當做PATCH和DELETE請求了。</p>
 <h2 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h2><p>get：取得我們想要的資料。<br>post：新增一項資料。（如果存在會新增一個新的）<br>put：新增一項資料，如果存在就覆蓋過去。（還是只有一筆資料）。<br>patch：附加新的資料在已經存在的資料後面。（資料必須已經存在，patch會擴充這項資料）<br>delete：刪除資料。</p>
-<p>Get、Post 的差異？有哪些特性？<br>get 是讀取資料 post 是新增資料 差異差異在於 safe 跟 idenpotent safe 意思是是否會修改<br>到資料，，如果會就代表不安全 也間接表示是否可以快取(不重複發出請求)， idenpotent 是否在不確定成功與否狀況下重新整理頁面</p>
+<p>Get、Post 的差異？有哪些特性？<br>get 是讀取資料 post 是新增資料 差異差異在於 safe 跟 idenpotent safe 意思是是否會修到資料，如果會就代表不安全，也間接表示是否可以快取(不重複發出請求)， idenpotent 是否在不確定成功與否狀況下重新整理頁面。</p>
 <p>HTTP GET和其他動詞最大的差別在於它被認為是一個純讀取、不會修改任何資料的操作，不像POST、PATCH、DELETE會修改伺服器上的資料。我們一般用瀏覽器GET網頁，可以回上一頁或重新整理，但是POST網頁要重新整理時，瀏覽器會提示你是否要在執行一次，就是這個道理。</p>
 <p>Rails用這套慣例來大大簡化了路由設定。那程式該怎麼寫呢？我們在config/routes.rb加入以下一行程式：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resources <span class="symbol">:tasks</span></span><br></pre></td></tr></table></figure>
