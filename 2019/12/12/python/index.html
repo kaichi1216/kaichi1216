@@ -2,36 +2,38 @@
 <html lang="zh-TW">
 
 <!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.9.0">
+
+<head>
+  <meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!--Description-->
-  
+
   <!--Author-->
-  
+
   <meta name="author" content="Kai Chi">
-  
+
 
   <!--Open Graph Title-->
-  
-      <meta property="og:title" content="試做 python 爬蟲">
-  
+
+  <meta property="og:title" content="試做 python 爬蟲">
+
   <!--Open Graph Description-->
-  
+
   <!--Open Graph Site Name-->
   <meta property="og:site_name" content="K7">
   <!--Type page-->
-  
-      <meta property="og:type" content="article">
-  
+
+  <meta property="og:type" content="article">
+
   <!--Page Cover-->
-  
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- Title -->
-  
+
   <title>試做 python 爬蟲 - K7</title>
 
 
@@ -61,217 +63,327 @@
 
   <!-- Nav -->
   <header class="site-header">
-  <div class="header-inside">
-    <div class="logo">
-      <a href="/" rel="home">
-        
-        <img src="https://hexo.io/logo.svg" alt="K7" height="60">
-        
-      </a>
-    </div>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse">
-        <ul class="navbar-nav">
-          
-          
+    <div class="header-inside">
+      <div class="logo">
+        <a href="/" rel="home">
+
+          <img src="https://hexo.io/logo.svg" alt="K7" height="60">
+
+        </a>
+      </div>
+      <!-- Navigation -->
+      <nav class="navbar">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse">
+          <ul class="navbar-nav">
+
+
             <li>
               <a href="/.">
-                
-                  home
-                
+
+                home
+
               </a>
             </li>
-          
+
             <li>
               <a href="/archives">
-                
-                  archive
-                
+
+                archive
+
               </a>
             </li>
-          
-        </ul>
+
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </nav>
+      <div class="button-wrap">
+        <button class="menu-toggle">Primary Menu</button>
       </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-    <div class="button-wrap">
-      <button class="menu-toggle">Primary Menu</button>
     </div>
-  </div>
-</header>
+  </header>
 
 
   <!-- Main Content -->
   <div class="content-area">
-  <div class="post">
-    <!-- Post Content -->
-    <div class="container">
-      <article>
-        <!-- Title date & tags -->
-        <div class="post-header">
-          <h1 class="entry-title">
-            試做 python 爬蟲
-            
-          </h1>
-          <p class="posted-on">
-          2019-12-12
-          </p>
-          <div class="tags-links">
-            
-              
-                <a href="/tags/菜鳥日誌/" rel="tag">
-                  菜鳥日誌
-                </a>
-              
-                <a href="/tags/Python/" rel="tag">
-                  Python
-                </a>
-              
-            
+    <div class="post">
+      <!-- Post Content -->
+      <div class="container">
+        <article>
+          <!-- Title date & tags -->
+          <div class="post-header">
+            <h1 class="entry-title">
+              嘗試做 python 爬蟲
+
+            </h1>
+            <p class="posted-on">
+              2019-12-12
+            </p>
+            <div class="tags-links">
+
+
+              <a href="/tags/菜鳥日誌/" rel="tag">
+                菜鳥日誌
+              </a>
+
+              <a href="/tags/Python/" rel="tag">
+                Python
+              </a>
+
+
+            </div>
           </div>
-        </div>
-        <!-- Post Main Content -->
-        <div class="entry-content has_line_number">
-          <p>覺得爬蟲抓取資料，超級酷的，但一直不知道該怎麼做，恰巧看到有大大分享如何實作簡易的爬蟲，看得我非常興奮，想說來試試看，中間除錯了一段時間，終於在最後完成拉！！！！</p>
-<p>首先你需要下載 <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python</a><br>因為mac os 原先就有 Python，但版本較舊，所以我需要下載比較新的版本，到官網下載安裝 可以到終端機輸入檢查是否有python版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 這是mac內建的python</span></span><br><span class="line">python --version</span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line">Python <span class="number">2.7</span><span class="number">.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下載最新版本</span></span><br><span class="line"></span><br><span class="line">python3 --version</span><br><span class="line">Python <span class="number">3.8</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+          <!-- Post Main Content -->
+          <div class="entry-content has_line_number">
+            <p>覺得爬蟲抓取資料，超級酷的，但一直不知道該怎麼做，恰巧看到有大大分享如何實作簡易的爬蟲，看得我非常興奮，想說來試試看，中間除錯了一段時間，終於在最後完成拉！！！！</p>
+            <p>首先你需要下載 <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python</a><br>因為mac os
+              原先就有 Python，但版本較舊，所以我需要下載比較新的版本，到官網下載安裝 可以到終端機輸入檢查是否有python版本</p>
+            <figure class="highlight python">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line"><span class="comment"># 這是mac內建的python</span></span><br><span class="line">python --version</span><br><span class="line"><span class="comment">#印出</span></span><br><span class="line">Python <span class="number">2.7</span><span class="number">.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下載最新版本</span></span><br><span class="line"></span><br><span class="line">python3 --version</span><br><span class="line">Python <span class="number">3.8</span><span class="number">.0</span></span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>因為我本身非常喜歡看電影，但常常會忘記最近有什麼新片上映，所以這次用抓取新電影來做示範</p>
-<p>打開你的編譯器，新建一個檔案 這裡我建立 start.py 檔案<br><img src="/images/python/python1.jpg"></p>
-<p>我們要抓取的是 HTML格式資料 所以要使用 beautifulsoup 這個第三方套件來做解析<br>當你下載 python 時也會一起安裝 PIP 套件管理工具 像是 ruby 的 Homebrew<br>接著在終端機輸入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+            <p>因為我本身非常喜歡看電影，但常常會忘記最近有什麼新片上映，所以這次用抓取新電影來做示範</p>
+            <p>打開你的編譯器，新建一個檔案 這裡我建立 start.py 檔案<br><img src="/images/python/python1.jpg"></p>
+            <p>我們要抓取的是 HTML格式資料 所以要使用 beautifulsoup 這個第三方套件來做解析<br>當你下載 python 時也會一起安裝 PIP 套件管理工具 像是 ruby 的
+              Homebrew<br>接著在終端機輸入</p>
+            <figure class="highlight plain">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line">pip install beautifulsoup4</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>接下來就可以開始實做囉<br><img src="/images/python/python2.jpg"><br>打開這個網頁 可以看到有電影圖片名稱，以此網頁網址用來抓取資料，點擊右鍵選擇檢視網頁原始碼，這就會是你待會抓取到的原始碼<br>打開你剛建立的檔案</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#start.py</span></span><br><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req  <span class="comment">#urllib request 是內建的套件 </span></span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line">request=req.Request(url) <span class="keyword">as</span> response:</span><br><span class="line">  data=response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">    print(data)</span><br></pre></td></tr></table></figure>
+            <p>接下來就可以開始實做囉<br><img src="/images/python/python2.jpg"><br>打開這個網頁
+              可以看到有電影圖片名稱，以此網頁網址用來抓取資料，點擊右鍵選擇檢視網頁原始碼，這就會是你待會抓取到的原始碼<br>打開你剛建立的檔案</p>
+            <figure class="highlight python">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line"><span class="comment">#start.py</span></span><br><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req  <span class="comment">#urllib request 是內建的套件 </span></span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line">request=req.Request(url) <span class="keyword">as</span> response:</span><br><span class="line">  data=response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">    print(data)</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>在終端機下輸入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 start.py</span><br></pre></td></tr></table></figure>
+            <p>在終端機下輸入</p>
+            <figure class="highlight plain">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line">python3 start.py</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>得到錯誤訊息<br><img src="/images/python/python3.jpg"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#錯誤訊息最後一行</span></span><br><span class="line">urllib.error.HTTPError: HTTP Error <span class="number">403</span>: Forbidden</span><br></pre></td></tr></table></figure>
+            <p>得到錯誤訊息<br><img src="/images/python/python3.jpg"></p>
+            <figure class="highlight python">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line"><span class="comment">#錯誤訊息最後一行</span></span><br><span class="line">urllib.error.HTTPError: HTTP Error <span class="number">403</span>: Forbidden</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>最後一行顯示 連線被拒絕，之所以出現上面的錯誤,是因為如果用 urllib.request 方式打開一個URL,伺服器端只會收到一個單純該頁面訪問的請求,但是伺服器並不知道發送這個請求使用的瀏覽器,操作系统,平台等信息,而缺少這些信息的請求往往都是非正常的訪問,例如爬蟲。<br>有些網站為了防止這種非正常的訪問,會驗證請求信息中的UserAgent(它的訊息包括硬件平台、系統軟件、應用軟體和用戶個人偏好)，如果UserAgent存在異常或者是不存在,那麼這次請求將會被拒絕(如上錯誤訊息所示)</p>
-<p>所以可以嘗試在请求中加入UserAgent的信息<br>那UserAgent要去哪裡找呢 打開你的網頁 找取開發者工作 Network<br><img src="/images/python/python4.jpg"><br>右下角最後有一個 User-Agent 複製這段，修改剛剛建立的程式碼</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+            <p>最後一行顯示 連線被拒絕，之所以出現上面的錯誤,是因為如果用 urllib.request
+              方式打開一個URL,伺服器端只會收到一個單純該頁面訪問的請求,但是伺服器並不知道發送這個請求使用的瀏覽器,操作系统,平台等信息,而缺少這些信息的請求往往都是非正常的訪問,例如爬蟲。<br>有些網站為了防止這種非正常的訪問,會驗證請求信息中的UserAgent(它的訊息包括硬件平台、系統軟件、應用軟體和用戶個人偏好)，如果UserAgent存在異常或者是不存在,那麼這次請求將會被拒絕(如上錯誤訊息所示)
+            </p>
+            <p>所以可以嘗試在请求中加入UserAgent的信息<br>那UserAgent要去哪裡找呢 打開你的網頁 找取開發者工作 Network<br><img
+                src="/images/python/python4.jpg"><br>右下角最後有一個 User-Agent 複製這段，修改剛剛建立的程式碼</p>
+            <figure class="highlight python">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line">print(data)</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
-<p>在終端機輸入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 start.py</span><br></pre></td></tr></table></figure>
-
-
-<p>這樣就可以看到抓取到的 原始碼資料跟網頁一樣了<br>接下來因為我只想抓取電影的標題，這時剛剛下載的套件就要派上用場</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line">root=bs4.BeautifulSoup(data, <span class="string">"html.parser"</span>) <span class="comment">#使用套件把剛剛抓到的原始碼用html去做解析</span></span><br><span class="line"><span class="comment">#找到 &lt;article&gt; 並且 class 為 filmList接著用迴圈印出他的字串(圖片如下)</span></span><br><span class="line">titles = root.find_all(<span class="string">"article"</span>, class_=<span class="string">"filmList"</span>)</span><br><span class="line"><span class="keyword">for</span> title <span class="keyword">in</span> titles:</span><br><span class="line">    print(title.a.string)</span><br></pre></td></tr></table></figure>
-
-<img src="/images/python/python5.jpg">
-
-
-<p>到終端機輸入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 start.py</span><br></pre></td></tr></table></figure>
-
-<p>就可以看到我們已經把每部電影的電影名都抓下來囉</p>
-<img src="/images/python/python6.jpg">
-
-
-<p>這是簡單的實作爬蟲，我也有試過在 ptt 抓取像是 nba版 movie版資料，但有個問題還在研究，因為現在這個做法只能抓取當頁的資料，但我想把 ptt movie版的 資料全抓下來 該怎麼做呢？還在研究中，不過爬蟲真的是非常好玩～～～</p>
-
-        </div>
-      </article>
-    </div>
-    <!-- Comments -->
-    <div class="container">
-      
-<section id="comment">
-  <!-- <h1 class="title">留言</h1> -->
-
-  
-</section>
+            <p>在終端機輸入</p>
+            <figure class="highlight plain">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line">python3 start.py</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
 
 
-    </div>
-    <!-- Pre or Next -->
-    <div class="nav-links">
-      
-      
+            <p>這樣就可以看到抓取到的 原始碼資料跟網頁一樣了<br>接下來因為我只想抓取電影的標題，這時剛剛下載的套件就要派上用場</p>
+            <figure class="highlight python">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> req </span><br><span class="line">url=<span class="string">"http://www.atmovies.com.tw/movie/new/"</span></span><br><span class="line"><span class="comment"># 建立一個request物件 附加 Request headers 的資訊</span></span><br><span class="line">request=req.Request(url, headers=&#123;<span class="string">"貼上你剛剛複製User-Agent"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> req.urlopen(request) <span class="keyword">as</span> response:</span><br><span class="line">    data = response.read().decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> bs4</span><br><span class="line">root=bs4.BeautifulSoup(data, <span class="string">"html.parser"</span>) <span class="comment">#使用套件把剛剛抓到的原始碼用html去做解析</span></span><br><span class="line"><span class="comment">#找到 &lt;article&gt; 並且 class 為 filmList接著用迴圈印出他的字串(圖片如下)</span></span><br><span class="line">titles = root.find_all(<span class="string">"article"</span>, class_=<span class="string">"filmList"</span>)</span><br><span class="line"><span class="keyword">for</span> title <span class="keyword">in</span> titles:</span><br><span class="line">    print(title.a.string)</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
+
+            <img src="/images/python/python5.jpg">
+
+
+            <p>到終端機輸入</p>
+            <figure class="highlight plain">
+              <table>
+                <tr>
+                  <td class="gutter">
+                    <pre><span class="line">1</span><br></pre>
+                  </td>
+                  <td class="code">
+                    <pre><span class="line">python3 start.py</span><br></pre>
+                  </td>
+                </tr>
+              </table>
+            </figure>
+
+            <p>就可以看到我們已經把每部電影的電影名都抓下來囉</p>
+            <img src="/images/python/python6.jpg">
+
+
+            <p>這是簡單的實作爬蟲，我也有試過在 ptt 抓取像是 nba版 movie版資料，但有個問題還在研究，因為現在這個做法只能抓取當頁的資料，但我想把 ptt movie版的 資料全抓下來
+              該怎麼做呢？還在研究中，不過爬蟲真的是非常好玩～～～</p>
+
+          </div>
+        </article>
+      </div>
+      <!-- Comments -->
+      <div class="container">
+
+        <section id="comment">
+          <!-- <h1 class="title">留言</h1> -->
+
+
+        </section>
+
+
+      </div>
+      <!-- Pre or Next -->
+      <div class="nav-links">
+
+
         <div class="nav-next">
-          <a href="/2019/11/24/ActiveRecord_Query_Interface/" rel="prev">下一頁 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/11/24/ActiveRecord_Query_Interface/" rel="prev">下一頁 <span
+              class="meta-arraw meta-arraw-right"></span></a>
         </div>
-      
-    </div>
 
+      </div>
+
+    </div>
   </div>
-</div>
 
 
   <!-- Footer -->
   <!-- Footer-widgets -->
-<div class="footer-widgets">
-  <div class="row inside-wrapper">
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">關於本站</h1>
-        <div class="custom-widget-content">
-          
-          <ul><li><a href="https://medium.com/@jok002787">文章分享</a></li></ul>
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">與我聯系</h1>
-        <div class="widget-text">
-          
-            
-              <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
-            
-              <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
-            
-              <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
-            
-          
-        </div>
-      </aside>
-    </div>
-    <div class="col-1-3">
-      <aside>
-        <h1 class="widget-title">站內搜索</h1>
-        <div class="widget-text">
-          <form onSubmit="return appDaily.submitSearch('')">
-            <p>
-              <input type="text" placeholder="search..." id="homeSearchInput">
-            </p>
-            <!-- <input type="submit" value="GO"> -->
-          </form>
-        </div>
-      </aside>
+  <div class="footer-widgets">
+    <div class="row inside-wrapper">
+      <div class="col-1-3">
+        <aside>
+          <h1 class="widget-title">關於本站</h1>
+          <div class="custom-widget-content">
+
+            <ul>
+              <li><a href="https://medium.com/@jok002787">文章分享</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <div class="col-1-3">
+        <aside>
+          <h1 class="widget-title">與我聯系</h1>
+          <div class="widget-text">
+
+
+            <a href="https://github.com/kaichi1216" class="icon icon-github" target="_blank">github</a>
+
+            <a href="mailto:jok002787@gmail.com" class="icon icon-mail" target="_blank">mail</a>
+
+            <a href="https://twitter.com/McL1TeXDx3PkO51" class="icon icon-twitter" target="_blank">twitter</a>
+
+
+          </div>
+        </aside>
+      </div>
+      <div class="col-1-3">
+        <aside>
+          <h1 class="widget-title">站內搜索</h1>
+          <div class="widget-text">
+            <form onSubmit="return appDaily.submitSearch('')">
+              <p>
+                <input type="text" placeholder="search..." id="homeSearchInput">
+              </p>
+              <!-- <input type="submit" value="GO"> -->
+            </form>
+          </div>
+        </aside>
+      </div>
     </div>
   </div>
-</div>
-<!-- Footer -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Footer -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-149600171-1');
-</script>
+    gtag('config', 'UA-149600171-1');
+  </script>
 
-<meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
+  <meta name="google-site-verification" content="H8YnPKVSCYTBh2AtkE7LnUSVi399v6NJYjsVxyLYSWU" />
 
-<footer class="site-info">
-  <p>
-    <span>K7 &copy; 2020</span>
-    
+  <footer class="site-info">
+    <p>
+      <span>K7 &copy; 2020</span>
+
       <span class="split">|</span>
-      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
-    
-  </p>
-</footer>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a
+          href="https://github.com/kaichi1216" target="_blank">Daily</a></span>
+
+    </p>
+  </footer>
 
 
   <!-- After footer scripts -->
   <!-- scripts -->
-<script src="/js/app.js"></script>
+  <script src="/js/app.js"></script>
 
 
 
